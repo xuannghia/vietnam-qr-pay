@@ -4,6 +4,7 @@ export enum BankCode {
   AGRIBANK = 'VBA',
   BAC_A_BANK = 'BAB',
   BAOVIET_BANK = 'BVB',
+  BIDC = 'BIDC',
   BIDV = 'BIDV',
   CAKE = 'CAKE',
   CBBANK = 'CBB',

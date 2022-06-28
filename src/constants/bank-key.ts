@@ -4,6 +4,7 @@ export enum BankKey {
   AGRIBANK = 'agribank',
   BAC_A_BANK = 'bacabank',
   BAOVIET_BANK = 'baoviet',
+  BIDC = 'bidc',
   BIDV = 'bidv',
   CAKE = 'cake',
   CBBANK = 'cbbank',

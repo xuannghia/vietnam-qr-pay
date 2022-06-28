@@ -1,12 +1,16 @@
 import crc16ccitt from 'crc/crc16ccitt'
-import { FIELD_ID, VIETQR_FIELD_ID, QRProvider, AdditionInfo, VIETQR_CONSUMER_FIELD_ID, Consumer, ADDITION_INFO_ID, Prodiver } from './constants'
+import { FieldID, VietQRFieldID, QRProvider, VietQRConsumerFieldID, Consumer, AdditionalDataID, Prodiver, AdditionalData } from './constants'
 
+// 000201 010210 020201 0306908401 0411VNPayWallet 07100393357158 0809Lê Anh Tú 090510000 1003704 1107 content 63042678
+// 000201 010211 26280010A000000775011001087990425204597753037045802VN5909MYPHAMHER6005HANOI62260311MY+PHAM+HER0707MPHER0163041C50
+// 000201 010212 38530010A0000007270123000697041601092576788590208QRIBFTTA5303704540410005802VN62150811Chuyen+tien6304BBB8
 export class QRPay {
   private content = ''
-  isValid = false
+  isValid = true
   version: string
   initMethod: string
   provider: Prodiver
+  consumer: Consumer
   providerGuid?: string
   currency?: string
   amount?: string
@@ -17,11 +21,12 @@ export class QRPay {
   acquier?: string
   city?: string
   zipCode?: string
-  additionInfo?: AdditionInfo
-  consumer: Consumer
+  additionalData?: AdditionalData
   crc?: string
 
   constructor (content?: string) {
+    this.provider = new Prodiver()
+    this.consumer = new Consumer()
     this.parse(content ?? '')
   }
 
@@ -30,68 +35,64 @@ export class QRPay {
   }
 
   public parse (content: string): void {
-    if (content.length < 4) return
+    if (content.length < 4) return this.invalid()
     this.content = content
     // verify CRC
-    this.isValid = QRPay.verifyCRC(content)
-    if (!this.isValid) return
+    const crcValid = QRPay.verifyCRC(content)
+    if (!crcValid) return this.invalid()
     // parse content
     this.parseRootContent(content)
   }
 
   private parseRootContent (content: string): void {
     const { id, length, value, nextValue } = QRPay.sliceContent(content)
-    if (value.length !== length) {
-      this.isValid = false
-    }
+    if (value.length !== length) return this.invalid()
     switch (id) {
-      case FIELD_ID.VERSION:
+      case FieldID.VERSION:
         this.version = value
         break
-      case FIELD_ID.INIT_METHOD:
+      case FieldID.INIT_METHOD:
         this.initMethod = value
         break
-      case FIELD_ID.VIETQR:
-        this.provider = new Prodiver()
+      case FieldID.VIETQR:
         this.provider.name = QRProvider.VIETQR
         this.provider.guid = value.slice(4, 14)
         this.parseVietQRContent(value.slice(14))
         break
-      case FIELD_ID.VNPAY:
-        this.provider = new Prodiver()
+      case FieldID.VNPAY:
         this.provider.name = QRProvider.VNPAY
         break
-      case FIELD_ID.CURRENCY:
+      case FieldID.CURRENCY:
         this.currency = value
         break
-      case FIELD_ID.AMOUNT:
+      case FieldID.AMOUNT:
         this.amount = value
         break
-      case FIELD_ID.TIP_AND_FEE_TYPE:
+      case FieldID.TIP_AND_FEE_TYPE:
         this.tipAndFeeType = value
         break
-      case FIELD_ID.TIP_AND_FEE_AMOUNT:
+      case FieldID.TIP_AND_FEE_AMOUNT:
         this.tipAndFeeAmount = value
         break
-      case FIELD_ID.TIP_AND_FEE_PERCENT:
+      case FieldID.TIP_AND_FEE_PERCENT:
         this.tipAndFeePercent = value
         break
-      case FIELD_ID.NATION:
+      case FieldID.NATION:
         this.nation = value
         break
-      case FIELD_ID.ACQUIER:
+      case FieldID.ACQUIER:
         this.acquier = value
         break
-      case FIELD_ID.CITY:
+      case FieldID.CITY:
         this.city = value
         break
-      case FIELD_ID.ZIP_CODE:
+      case FieldID.ZIP_CODE:
         this.zipCode = value
         break
-      case FIELD_ID.ADDITION_INFO:
+      case FieldID.ADDITION_INFO:
         this.parseAdditionInfo(value)
         break
-      case FIELD_ID.CRC:
+      case FieldID.CRC:
         this.crc = value
         break
       default:
@@ -103,15 +104,14 @@ export class QRPay {
   private parseVietQRContent (content: string): void {
     const { id, value, nextValue } = QRPay.sliceContent(content)
     switch (id) {
-      case VIETQR_FIELD_ID.ACQUIER:
+      case VietQRFieldID.ACQUIER:
         this.provider.acquier = value
         break
-      case VIETQR_FIELD_ID.CONSUMER:
-        this.consumer = new Consumer()
+      case VietQRFieldID.CONSUMER:
         this.parseVietQRConsumer(value)
         break
-      case VIETQR_FIELD_ID.SERVICE:
-        if (this.provider != null) this.provider.service = value
+      case VietQRFieldID.SERVICE:
+        this.provider.service = value
         break
       default:
         break
@@ -122,10 +122,10 @@ export class QRPay {
   private parseVietQRConsumer (content: string): void {
     const { id, value, nextValue } = QRPay.sliceContent(content)
     switch (id) {
-      case VIETQR_CONSUMER_FIELD_ID.BANK_BIN:
+      case VietQRConsumerFieldID.BANK_BIN:
         this.consumer.bankBin = value
         break
-      case VIETQR_CONSUMER_FIELD_ID.BANK_NUMBER:
+      case VietQRConsumerFieldID.BANK_NUMBER:
         this.consumer.bankNumber = value
         break
       default:
@@ -136,25 +136,25 @@ export class QRPay {
 
   private parseAdditionInfo (content: string): void {
     const { id, value, nextValue } = QRPay.sliceContent(content)
-    this.additionInfo = new AdditionInfo()
+    this.additionalData = new AdditionalData()
     switch (id) {
-      case ADDITION_INFO_ID.PURPOSE_OF_TRANSACTION:
-        this.additionInfo.purpose = value
+      case AdditionalDataID.PURPOSE_OF_TRANSACTION:
+        this.additionalData.purpose = value
         break
-      case ADDITION_INFO_ID.BILL_NUMBER:
-        this.additionInfo.billNumber = value
+      case AdditionalDataID.BILL_NUMBER:
+        this.additionalData.billNumber = value
         break
-      case ADDITION_INFO_ID.MOBILE_NUMBER:
-        this.additionInfo.mobileNumber = value
+      case AdditionalDataID.MOBILE_NUMBER:
+        this.additionalData.mobileNumber = value
         break
-      case ADDITION_INFO_ID.REFERENCE_LABEL:
-        this.additionInfo.reference = value
+      case AdditionalDataID.REFERENCE_LABEL:
+        this.additionalData.reference = value
         break
-      case ADDITION_INFO_ID.STORE_LABEL:
-        this.additionInfo.store = value
+      case AdditionalDataID.STORE_LABEL:
+        this.additionalData.store = value
         break
-      case ADDITION_INFO_ID.TERMINAL_LABEL:
-        this.additionInfo.terminal = value
+      case AdditionalDataID.TERMINAL_LABEL:
+        this.additionalData.terminal = value
         break
       default:
         break
@@ -181,5 +181,9 @@ export class QRPay {
     const value = content.slice(4, 4 + length)
     const nextValue = content.slice(4 + length)
     return { id, length, value, nextValue }
+  }
+
+  private invalid (): void {
+    this.isValid = false
   }
 }
