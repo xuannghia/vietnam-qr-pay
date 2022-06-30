@@ -17,7 +17,7 @@ export enum FieldID {
   ACQUIER = '59',
   CITY = '60',
   ZIP_CODE = '61',
-  ADDITION_INFO = '62',
+  ADDITIONAL_DATA = '62',
   CRC = '63'
 }
 

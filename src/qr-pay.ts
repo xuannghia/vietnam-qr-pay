@@ -21,12 +21,13 @@ export class QRPay {
   acquier?: string
   city?: string
   zipCode?: string
-  additionalData?: AdditionalData
+  additionalData: AdditionalData
   crc?: string
 
   constructor (content?: string) {
     this.provider = new Prodiver()
     this.consumer = new Consumer()
+    this.additionalData = new AdditionalData()
     this.parse(content ?? '')
   }
 
@@ -89,8 +90,8 @@ export class QRPay {
       case FieldID.ZIP_CODE:
         this.zipCode = value
         break
-      case FieldID.ADDITION_INFO:
-        this.parseAdditionInfo(value)
+      case FieldID.ADDITIONAL_DATA:
+        this.parseAdditionalData(value)
         break
       case FieldID.CRC:
         this.crc = value
@@ -134,9 +135,8 @@ export class QRPay {
     if (nextValue.length > 4) this.parseVietQRConsumer(nextValue)
   }
 
-  private parseAdditionInfo (content: string): void {
+  private parseAdditionalData (content: string): void {
     const { id, value, nextValue } = QRPay.sliceContent(content)
-    this.additionalData = new AdditionalData()
     switch (id) {
       case AdditionalDataID.PURPOSE_OF_TRANSACTION:
         this.additionalData.purpose = value
@@ -159,7 +159,7 @@ export class QRPay {
       default:
         break
     }
-    if (nextValue.length > 4) this.parseAdditionInfo(nextValue)
+    if (nextValue.length > 4) this.parseAdditionalData(nextValue)
   }
 
   private static verifyCRC (content: string): boolean {
@@ -170,7 +170,7 @@ export class QRPay {
     return crcCode === genCrcCode
   }
 
-  private static genCRCCode (content: string): string {
+  public static genCRCCode (content: string): string {
     const crcCode: string = crc16ccitt(content).toString(16).toUpperCase()
     return crcCode.length === 4 ? crcCode : `0${crcCode}`
   }
