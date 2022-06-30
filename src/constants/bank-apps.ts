@@ -24,7 +24,7 @@ export const BankApps: BankApp[] = [
     packageId: 'mobile.acb.com.vn',
     appStoreId: 'id950141024',
     supportVietQR: true,
-    supportNapas: false
+    supportNapas: true
   },
   {
     bank: BankKey.AGRIBANK,
@@ -38,8 +38,8 @@ export const BankApps: BankApp[] = [
     bank: BankKey.BAC_A_BANK,
     packageId: 'com.bab.retailUAT',
     appStoreId: 'id1441408786',
-    supportVietQR: true,
-    supportNapas: true
+    supportVietQR: false,
+    supportNapas: false
   },
   {
     bank: BankKey.BAOVIET_BANK,
@@ -72,16 +72,20 @@ export const BankApps: BankApp[] = [
     packageId: 'xyz.be.cake',
     appStoreId: 'id1551907051',
     supportVietQR: true,
-    supportNapas: false
+    supportNapas: true
   },
   {
     bank: BankKey.CBBANK,
-    scheme: 'cbbankmobile',
-    packageId: 'com.vnpay.cbbank',
-    appStoreId: 'id1137160023'
+    packageId: 'cbbank.vn.mobile',
+    appStoreId: 'id1531443181',
+    supportVietQR: false,
+    supportNapas: false
   },
   {
     bank: BankKey.CIMB,
+    scheme: 'cimb',
+    packageId: 'vn.cimbbank.octo',
+    appStoreId: 'id1318127958',
     supportVietQR: true,
     supportNapas: false
   },
@@ -95,14 +99,16 @@ export const BankApps: BankApp[] = [
   },
   {
     bank: BankKey.DBS_BANK,
-    supportVietQR: true,
+    packageId: 'com.dbs.sg.dbsmbanking',
+    appStoreId: 'id1068403826',
+    supportVietQR: false,
     supportNapas: false
   },
   {
     bank: BankKey.DONG_A_BANK,
     packageId: 'com.dongabank.mobilenternet',
     appStoreId: 'id993124125',
-    supportVietQR: true,
+    supportVietQR: false,
     supportNapas: false
   },
   {
@@ -128,16 +134,23 @@ export const BankApps: BankApp[] = [
   },
   {
     bank: BankKey.HONGLEONG_BANK,
-    supportVietQR: true,
+    packageId: 'my.com.hongleongconnect.mobileconnect',
+    appStoreId: 'id1446719260',
+    supportVietQR: false,
     supportNapas: false
   },
   {
     bank: BankKey.HSBC,
-    supportVietQR: true,
+    packageId: 'vn.hsbc.hsbcvietnam',
+    appStoreId: 'id1472163155',
+    supportVietQR: false,
     supportNapas: false
   },
   {
     bank: BankKey.IBK_HCM,
+    scheme: 'ionebankglobal',
+    packageId: 'com.ibk.neobanking.mini',
+    appStoreId: 'id787064809',
     supportVietQR: true,
     supportNapas: false
   },
@@ -151,7 +164,9 @@ export const BankApps: BankApp[] = [
   },
   {
     bank: BankKey.KASIKORN_BANK,
-    supportVietQR: true,
+    packageId: 'com.kasikornbank.kplus.vn',
+    appStoreId: 'id1586576195',
+    supportVietQR: false,
     supportNapas: false
   },
   {
@@ -164,7 +179,9 @@ export const BankApps: BankApp[] = [
   },
   {
     bank: BankKey.KOOKMIN_BANK_HCM,
-    supportVietQR: true,
+    packageId: 'com.kbstar.global',
+    appStoreId: 'id1542727700',
+    supportVietQR: false,
     supportNapas: false
   },
   {
@@ -181,7 +198,7 @@ export const BankApps: BankApp[] = [
     packageId: 'com.mbmobile',
     appStoreId: 'id1205807363',
     supportVietQR: true,
-    supportNapas: false
+    supportNapas: true
   },
   {
     bank: BankKey.MSB,
@@ -201,12 +218,18 @@ export const BankApps: BankApp[] = [
   },
   {
     bank: BankKey.NCB,
+    scheme: 'ncbizimobile',
+    packageId: 'com.ncb.bank',
+    appStoreId: 'id1465217154',
     supportVietQR: true,
     supportNapas: false
   },
   {
     bank: BankKey.NONGHYUP_BANK_HN,
-    supportVietQR: false, // temp
+    scheme: 'newnhsmartbanking',
+    packageId: 'nh.smart.banking',
+    appStoreId: 'id1444712671',
+    supportVietQR: true,
     supportNapas: false
   },
   {
@@ -227,7 +250,9 @@ export const BankApps: BankApp[] = [
   },
   {
     bank: BankKey.PGBANK,
-    supportVietQR: true,
+    packageId: 'pgbankApp.pgbank.com.vn',
+    appStoreId: 'id1537765475',
+    supportVietQR: false,
     supportNapas: false
   },
   {
@@ -296,7 +321,9 @@ export const BankApps: BankApp[] = [
   },
   {
     bank: BankKey.STANDARD_CHARTERED_BANK,
-    supportVietQR: true,
+    packageId: 'com.sc.mobilebanking.vn',
+    appStoreId: 'id1146741999',
+    supportVietQR: false,
     supportNapas: false
   },
   {
@@ -305,7 +332,7 @@ export const BankApps: BankApp[] = [
     packageId: 'vn.com.techcombank.bb.app',
     appStoreId: 'id1548623362',
     supportVietQR: true,
-    supportNapas: false
+    supportNapas: true
   },
   {
     bank: BankKey.TPBANK,
@@ -313,18 +340,18 @@ export const BankApps: BankApp[] = [
     packageId: 'com.tpbankquickpay',
     appStoreId: 'id1292194225',
     supportVietQR: true,
-    supportNapas: false
+    supportNapas: true
   },
   {
     bank: BankKey.UBANK,
     packageId: 'vn.vpbank.ubank',
     appStoreId: 'id1529056628',
-    supportVietQR: true,
+    supportVietQR: false,
     supportNapas: false
   },
   {
     bank: BankKey.UNITED_OVERSEAS_BANK,
-    supportVietQR: true,
+    supportVietQR: false,
     supportNapas: false
   },
   {
@@ -333,7 +360,7 @@ export const BankApps: BankApp[] = [
     packageId: 'com.vn.vib.mobileapp',
     appStoreId: 'id949371011',
     supportVietQR: true,
-    supportNapas: false
+    supportNapas: true
   },
   {
     bank: BankKey.VIET_A_BANK,
@@ -355,8 +382,8 @@ export const BankApps: BankApp[] = [
     bank: BankKey.VIETCAPITAL_BANK,
     packageId: 'vn.banvietbank.mobilebanking',
     appStoreId: 'id1526444697',
-    supportVietQR: true,
-    supportNapas: true
+    supportVietQR: false,
+    supportNapas: false
   },
   {
     bank: BankKey.VIETCOMBANK,
@@ -379,11 +406,11 @@ export const BankApps: BankApp[] = [
     packageId: 'com.vnpay.vpbankonline',
     appStoreId: 'id1209349510',
     supportVietQR: true,
-    supportNapas: false
+    supportNapas: true
   },
   {
     bank: BankKey.VRB,
-    supportVietQR: true,
+    supportVietQR: false,
     supportNapas: false
   },
   {
