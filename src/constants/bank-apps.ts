@@ -354,7 +354,7 @@ export const BankApps: BankApp[] = [
     scheme: 'mightyapp',
     packageId: 'com.uob.mightyvn',
     appStoreId: 'id1174327324',
-    supportVietQR: false,
+    supportVietQR: true,
     supportNapas: false
   },
   {
