@@ -351,6 +351,9 @@ export const BankApps: BankApp[] = [
   },
   {
     bank: BankKey.UNITED_OVERSEAS_BANK,
+    scheme: 'mightyapp',
+    packageId: 'com.uob.mightyvn',
+    appStoreId: 'id1174327324',
     supportVietQR: false,
     supportNapas: false
   },
