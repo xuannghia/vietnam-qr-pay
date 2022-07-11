@@ -1,5 +1,5 @@
-import crc16ccitt from 'crc/crc16ccitt'
 import { FieldID, QRProvider, VietQRConsumerFieldID, Consumer, AdditionalDataID, Prodiver, AdditionalData, QRProviderGUID } from './constants'
+import { crc16ccitt } from './crc16'
 export class QRPay {
   private content = ''
   isValid = true
@@ -169,7 +169,7 @@ export class QRPay {
 
   public static genCRCCode (content: string): string {
     const crcCode: string = crc16ccitt(content).toString(16).toUpperCase()
-    return crcCode.length === 4 ? crcCode : `0${crcCode}`
+    return `0000${crcCode}`.slice(-4)
   }
 
   private static sliceContent (content: string): { id: string, length: number, value: string, nextValue: string } {
