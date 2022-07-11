@@ -1,6 +1,6 @@
 {
   "name": "vietnam-qr-pay",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Encode/Decode VietQR and VNPAY-QR",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -34,6 +34,9 @@
     "ts-node": "^10.8.1",
     "ts-standard": "^11.0.0",
     "typescript": "^4.7.4"
+  },
+  "peerDependencies": {
+    "buffer": "^5.0.8"
   },
   "dependencies": {},
   "jest": {
