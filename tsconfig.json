@@ -8,7 +8,8 @@
     "allowSyntheticDefaultImports": true,
     "strictNullChecks": true,
     "target": "es2017",
-    "sourceMap": true,
+    "sourceMap": false,
+    "inlineSourceMap": false,
     "outDir": "./dist",
     "baseUrl": "./",
     "incremental": true,
@@ -19,6 +20,5 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "declarationDir": "dist",
-
   }
 }
