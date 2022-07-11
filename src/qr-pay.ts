@@ -1,15 +1,11 @@
 import crc16ccitt from 'crc/crc16ccitt'
-import { FieldID, VietQRFieldID, QRProvider, VietQRConsumerFieldID, Consumer, AdditionalDataID, Prodiver, AdditionalData } from './constants'
-
-// 000201 010210 020201 0306908401 0411VNPayWallet 07100393357158 0809Lê Anh Tú 090510000 1003704 1107 content 63042678
-// 000201 010211 26280010A000000775011001087990425204597753037045802VN5909MYPHAMHER6005HANOI62260311MY+PHAM+HER0707MPHER0163041C50
-// 000201 010212 38530010A0000007270123000697041601092576788590208QRIBFTTA5303704540410005802VN62150811Chuyen+tien6304BBB8
+import { FieldID, QRProvider, VietQRConsumerFieldID, Consumer, AdditionalDataID, Prodiver, AdditionalData, QRProviderGUID } from './constants'
 export class QRPay {
   private content = ''
   isValid = true
   version: string
   initMethod: string
-  provider: Prodiver
+  provider: Prodiver // Provider/Merchant info
   consumer: Consumer
   providerGuid?: string
   currency?: string
@@ -56,12 +52,8 @@ export class QRPay {
         this.initMethod = value
         break
       case FieldID.VIETQR:
-        this.provider.name = QRProvider.VIETQR
-        this.provider.guid = value.slice(4, 14)
-        this.parseVietQRContent(value.slice(14))
-        break
-      case FieldID.VNPAY:
-        this.provider.name = QRProvider.VNPAY
+      case FieldID.PROVIDER_INFO:
+        this.parseProviderInfo(value)
         break
       case FieldID.CURRENCY:
         this.currency = value
@@ -102,22 +94,27 @@ export class QRPay {
     if (nextValue.length > 4) this.parseRootContent(nextValue)
   }
 
-  private parseVietQRContent (content: string): void {
+  private parseProviderInfo (content: string): void {
     const { id, value, nextValue } = QRPay.sliceContent(content)
     switch (id) {
-      case VietQRFieldID.ACQUIER:
-        this.provider.acquier = value
+      case '00':
+        this.provider.guid = value
         break
-      case VietQRFieldID.CONSUMER:
-        this.parseVietQRConsumer(value)
+      case '01':
+        if (this.provider.guid === QRProviderGUID.VNPAY) {
+          this.provider.name = QRProvider.VNPAY
+        } else if (this.provider.guid === QRProviderGUID.VIETQR) {
+          this.provider.name = QRProvider.VIETQR
+          this.parseVietQRConsumer(value)
+        }
         break
-      case VietQRFieldID.SERVICE:
+      case '03':
         this.provider.service = value
         break
       default:
         break
     }
-    if (nextValue.length > 4) this.parseVietQRContent(nextValue)
+    if (nextValue.length > 4) this.parseProviderInfo(nextValue)
   }
 
   private parseVietQRConsumer (content: string): void {

@@ -1,12 +1,17 @@
 export enum QRProvider {
   VIETQR = 'VIETQR',
-  VNPAY = 'VNPAY'
+  VNPAY = 'VNPAY',
+}
+
+export enum QRProviderGUID {
+  VNPAY = 'A000000775',
+  VIETQR = 'A000000727'
 }
 
 export enum FieldID {
   VERSION = '00',
   INIT_METHOD = '01',
-  VNPAY = '26',
+  PROVIDER_INFO = '26',
   VIETQR = '38',
   CURRENCY = '53',
   AMOUNT = '54',
@@ -21,14 +26,14 @@ export enum FieldID {
   CRC = '63'
 }
 
-export enum VietQRFieldID {
-  ACQUIER = '00',
-  CONSUMER = '01',
+export enum ProviderFieldID {
+  GUID = '00',
+  DATA = '01',
   SERVICE = '02'
 }
 
 export enum VietQRSevice {
-  BY_ACCOOUNT_NUMBER = 'QRIBFTTA', // Dịch vụ chuyển nhanh đến Tài khoản
+  BY_ACCOUNT_NUMBER = 'QRIBFTTA', // Dịch vụ chuyển nhanh đến Tài khoản
   BY_CARD_NUMBER = 'QRIBFTTC' // Dịch vụ chuyển nhanh đến Thẻ
 }
 
@@ -53,7 +58,6 @@ export class Prodiver {
   name?: QRProvider
   guid?: string
   service?: string
-  acquier?: string
 }
 
 export class AdditionalData {
