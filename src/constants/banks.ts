@@ -90,7 +90,7 @@ export const Banks: Bank[] = [
   {
     key: BankKey.CAKE,
     code: BankCode.CAKE,
-    name: 'TMCP Việt Nam Thịnh Vượng - Ngân hàng số CAKE by VPBank',
+    name: 'Ngân hàng số CAKE by VPBank - Ngân hàng TMCP Việt Nam Thịnh Vượng',
     bin: '546034',
     shortName: 'CAKE',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
@@ -470,7 +470,7 @@ export const Banks: Bank[] = [
   {
     key: BankKey.UBANK,
     code: BankCode.UBANK,
-    name: 'TMCP Việt Nam Thịnh Vượng - Ngân hàng số Ubank by VPBank',
+    name: 'Ngân hàng số Ubank by VPBank - Ngân hàng TMCP Việt Nam Thịnh Vượng',
     bin: '546035',
     shortName: 'Ubank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
