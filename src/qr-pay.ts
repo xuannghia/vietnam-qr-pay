@@ -1,13 +1,13 @@
-import { FieldID, QRProvider, VietQRConsumerFieldID, Consumer, AdditionalDataID, Prodiver, AdditionalData, QRProviderGUID } from './constants'
+import { FieldID, QRProvider, VietQRConsumerFieldID, Consumer, AdditionalDataID, Prodiver, AdditionalData, QRProviderGUID, ProviderFieldID, Merchant } from './constants'
 import { crc16ccitt } from './crc16'
 export class QRPay {
-  private content = ''
   isValid = true
   version: string
   initMethod: string
-  provider: Prodiver // Provider/Merchant info
+  provider: Prodiver
+  merchant: Merchant
   consumer: Consumer
-  providerGuid?: string
+  category?: string
   currency?: string
   amount?: string
   tipAndFeeType?: string
@@ -23,22 +23,65 @@ export class QRPay {
   constructor (content?: string) {
     this.provider = new Prodiver()
     this.consumer = new Consumer()
+    this.merchant = new Merchant()
     this.additionalData = new AdditionalData()
     this.parse(content ?? '')
   }
 
-  getContent (): string {
-    return this.content
-  }
-
   public parse (content: string): void {
     if (content.length < 4) return this.invalid()
-    this.content = content
     // verify CRC
     const crcValid = QRPay.verifyCRC(content)
     if (!crcValid) return this.invalid()
     // parse content
     this.parseRootContent(content)
+  }
+
+  public build (): string {
+    const version = QRPay.genFieldData(FieldID.VERSION, this.version)
+    const initMethod = QRPay.genFieldData(FieldID.INIT_METHOD, this.initMethod)
+
+    const guid = QRPay.genFieldData(ProviderFieldID.GUID, this.provider.guid)
+
+    let providerDataContent = ''
+    if (this.provider.guid === QRProviderGUID.VIETQR) {
+      const bankBin = QRPay.genFieldData(VietQRConsumerFieldID.BANK_BIN, this.consumer.bankBin)
+      const bankNumber = QRPay.genFieldData(VietQRConsumerFieldID.BANK_NUMBER, this.consumer.bankNumber)
+      providerDataContent = bankBin + bankNumber
+    } else if (this.provider.guid === QRProviderGUID.VNPAY) {
+      providerDataContent = this.merchant.merchantId ?? ''
+    }
+    const provider = QRPay.genFieldData(ProviderFieldID.DATA, providerDataContent)
+    const service = QRPay.genFieldData(ProviderFieldID.SERVICE, this.provider.service)
+    const providerData = QRPay.genFieldData(this.provider.fieldId, guid + provider + service)
+
+    const category = QRPay.genFieldData(FieldID.CATEGORY, this.category)
+    const currency = QRPay.genFieldData(FieldID.CURRENCY, this.currency)
+    const amountStr = QRPay.genFieldData(FieldID.AMOUNT, this.amount)
+    const tipAndFeeType = QRPay.genFieldData(FieldID.TIP_AND_FEE_TYPE, this.tipAndFeeType)
+    const tipAndFeeAmount = QRPay.genFieldData(FieldID.TIP_AND_FEE_AMOUNT, this.tipAndFeeAmount)
+    const tipAndFeePercent = QRPay.genFieldData(FieldID.TIP_AND_FEE_PERCENT, this.tipAndFeePercent)
+    const nation = QRPay.genFieldData(FieldID.NATION, this.nation)
+    const acquier = QRPay.genFieldData(FieldID.ACQUIER, this.acquier)
+    const city = QRPay.genFieldData(FieldID.CITY, this.city)
+    const zipCode = QRPay.genFieldData(FieldID.ZIP_CODE, this.zipCode)
+
+    const buildNumber = QRPay.genFieldData(AdditionalDataID.BILL_NUMBER, this.additionalData.billNumber)
+    const mobileNumber = QRPay.genFieldData(AdditionalDataID.MOBILE_NUMBER, this.additionalData.mobileNumber)
+    const storeLabel = QRPay.genFieldData(AdditionalDataID.STORE_LABEL, this.additionalData.store)
+    const loyaltyNumber = QRPay.genFieldData(AdditionalDataID.LOYALTY_NUMBER, this.additionalData.loyaltyNumber)
+    const reference = QRPay.genFieldData(AdditionalDataID.REFERENCE_LABEL, this.additionalData.reference)
+    const customerLabel = QRPay.genFieldData(AdditionalDataID.CUSTOMER_LABEL, this.additionalData.customerLabel)
+    const terminal = QRPay.genFieldData(AdditionalDataID.TERMINAL_LABEL, this.additionalData.terminal)
+    const purpose = QRPay.genFieldData(AdditionalDataID.PURPOSE_OF_TRANSACTION, this.additionalData.purpose)
+    const dataRequest = QRPay.genFieldData(AdditionalDataID.ADDITIONAL_CONSUMER_DATA_REQUEST, this.additionalData.dataRequest)
+
+    const additionalDataContent = buildNumber + mobileNumber + storeLabel + loyaltyNumber + reference + customerLabel + terminal + purpose + dataRequest
+    const additionalData = QRPay.genFieldData(FieldID.ADDITIONAL_DATA, additionalDataContent)
+
+    const content = `${version}${initMethod}${providerData}${category}${currency}${amountStr}${tipAndFeeType}${tipAndFeeAmount}${tipAndFeePercent}${nation}${acquier}${city}${zipCode}${additionalData}${FieldID.CRC}04`
+    const crc = QRPay.genCRCCode(content)
+    return content + crc
   }
 
   private parseRootContent (content: string): void {
@@ -52,8 +95,12 @@ export class QRPay {
         this.initMethod = value
         break
       case FieldID.VIETQR:
-      case FieldID.PROVIDER_INFO:
+      case FieldID.VNPAYQR:
+        this.provider.fieldId = id
         this.parseProviderInfo(value)
+        break
+      case FieldID.CATEGORY:
+        this.category = value
         break
       case FieldID.CURRENCY:
         this.currency = value
@@ -97,18 +144,19 @@ export class QRPay {
   private parseProviderInfo (content: string): void {
     const { id, value, nextValue } = QRPay.sliceContent(content)
     switch (id) {
-      case '00':
+      case ProviderFieldID.GUID:
         this.provider.guid = value
         break
-      case '01':
+      case ProviderFieldID.DATA:
         if (this.provider.guid === QRProviderGUID.VNPAY) {
           this.provider.name = QRProvider.VNPAY
+          this.merchant.merchantId = value
         } else if (this.provider.guid === QRProviderGUID.VIETQR) {
           this.provider.name = QRProvider.VIETQR
           this.parseVietQRConsumer(value)
         }
         break
-      case '03':
+      case ProviderFieldID.SERVICE:
         this.provider.service = value
         break
       default:
@@ -182,5 +230,14 @@ export class QRPay {
 
   private invalid (): void {
     this.isValid = false
+  }
+
+  private static genFieldData (id?: string, value?: string): string {
+    const fieldId = id ?? ''
+    const fieldValue = value ?? ''
+    const idLen = fieldId.length
+    if (idLen !== 2 || fieldValue.length <= 0) return ''
+    const length = `00${fieldValue.length}`.slice(-2)
+    return `${fieldId}${length}${fieldValue}`
   }
 }

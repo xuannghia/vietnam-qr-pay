@@ -11,8 +11,9 @@ export enum QRProviderGUID {
 export enum FieldID {
   VERSION = '00',
   INIT_METHOD = '01',
-  PROVIDER_INFO = '26',
+  VNPAYQR = '26',
   VIETQR = '38',
+  CATEGORY = '52',
   CURRENCY = '53',
   AMOUNT = '54',
   TIP_AND_FEE_TYPE = '55',
@@ -55,6 +56,7 @@ export enum AdditionalDataID {
 }
 
 export class Prodiver {
+  fieldId?: string
   name?: QRProvider
   guid?: string
   service?: string
@@ -62,14 +64,21 @@ export class Prodiver {
 
 export class AdditionalData {
   billNumber?: string
-  purpose?: string
   mobileNumber?: string
-  reference?: string
   store?: string
+  loyaltyNumber?: string
+  reference?: string
+  customerLabel?: string
   terminal?: string
+  purpose?: string
+  dataRequest?: string
 }
 
 export class Consumer {
   bankBin?: string
   bankNumber?: string
+}
+
+export class Merchant {
+  merchantId?: string
 }
