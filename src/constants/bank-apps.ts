@@ -406,6 +406,7 @@ export const BankApps: BankApp[] = [
   },
   {
     bank: BankKey.VPBANK,
+    scheme: 'vpbankneo',
     packageId: 'com.vnpay.vpbankonline',
     appStoreId: 'id1209349510',
     supportVietQR: true,
