@@ -209,7 +209,7 @@ export class QRPay {
 
   private static verifyCRC (content: string): boolean {
     const checkContent = content.slice(0, -4)
-    const crcCode = content.slice(-4)
+    const crcCode = content.slice(-4).toUpperCase()
 
     const genCrcCode = QRPay.genCRCCode(checkContent)
     return crcCode === genCrcCode

@@ -30,3 +30,15 @@ test('Invalid CRC VietQR ', () => {
   const qrPay = new QRPay('00020101021238530010A0000007270123000697041601092576788590208QRIBFTTA5303704540410005802VN62150811Chuyen tien6304BBB5')
   expect(qrPay.isValid).toBe(false)
 })
+
+test('MBBank QR with lowercase CRC', () => {
+  const qrContent = '00020101021138540010A00000072701240006970422011003523509170208QRIBFTTA53037045802VN630479db'
+  const qrPay = new QRPay(qrContent)
+  expect(qrPay.isValid).toBe(true)
+  expect(qrPay.version).toBe('01')
+  expect(qrPay.provider.name).toBe(QRProvider.VIETQR)
+  expect(qrPay.provider.guid).toBe(QRProviderGUID.VIETQR)
+  expect(qrPay.consumer.bankBin).toBe('970422')
+  expect(qrPay.consumer.bankNumber).toBe('0352350917')
+  expect(qrPay.build()?.slice(-4)).toBe(qrContent?.slice(-4).toUpperCase())
+})
