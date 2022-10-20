@@ -9,6 +9,8 @@ export interface BankApp {
   supportVNPayQR?: boolean
 }
 
+// List app support VNPayQR deeplink https://sandbox.vnpayment.vn/apis/danh-sach-ngan-hang/
+
 export const BankApps: BankApp[] = [
   {
     bank: BankKey.ABBANK,
@@ -24,7 +26,7 @@ export const BankApps: BankApp[] = [
     packageId: 'mobile.acb.com.vn',
     appStoreId: 'id950141024',
     supportVietQR: true,
-    supportVNPayQR: true
+    supportVNPayQR: false
   },
   {
     bank: BankKey.AGRIBANK,
@@ -72,7 +74,7 @@ export const BankApps: BankApp[] = [
     packageId: 'xyz.be.cake',
     appStoreId: 'id1551907051',
     supportVietQR: true,
-    supportVNPayQR: true
+    supportVNPayQR: false
   },
   {
     bank: BankKey.CBBANK,
@@ -198,7 +200,7 @@ export const BankApps: BankApp[] = [
     packageId: 'com.mbmobile',
     appStoreId: 'id1205807363',
     supportVietQR: true,
-    supportVNPayQR: true
+    supportVNPayQR: false
   },
   {
     bank: BankKey.MSB,
@@ -206,7 +208,7 @@ export const BankApps: BankApp[] = [
     packageId: 'vn.com.msb.smartBanking',
     appStoreId: 'id436134873',
     supportVietQR: true,
-    supportVNPayQR: true
+    supportVNPayQR: false
   },
   {
     bank: BankKey.NAM_A_BANK,
@@ -238,7 +240,7 @@ export const BankApps: BankApp[] = [
     packageId: 'com.ocb.omniextra',
     appStoreId: 'id1358682577',
     supportVietQR: true,
-    supportVNPayQR: true
+    supportVNPayQR: false
   },
   {
     bank: BankKey.OCEANBANK,
@@ -261,7 +263,7 @@ export const BankApps: BankApp[] = [
     packageId: 'com.vnpay.publicbank',
     appStoreId: 'id1573736472',
     supportVietQR: true,
-    supportVNPayQR: true
+    supportVNPayQR: false
   },
   {
     bank: BankKey.PVCOM_BANK,
@@ -269,7 +271,7 @@ export const BankApps: BankApp[] = [
     packageId: 'com.vsii.pvcombank',
     appStoreId: 'id957284067',
     supportVietQR: true,
-    supportVNPayQR: true
+    supportVNPayQR: false
   },
   {
     bank: BankKey.SACOMBANK,
@@ -277,7 +279,7 @@ export const BankApps: BankApp[] = [
     packageId: 'src.com.sacombank',
     appStoreId: 'id885814869',
     supportVietQR: true,
-    supportVNPayQR: true
+    supportVNPayQR: false
   },
   {
     bank: BankKey.SAIGONBANK,
@@ -301,7 +303,7 @@ export const BankApps: BankApp[] = [
     packageId: 'vn.com.seabank.mb1',
     appStoreId: 'id846407152',
     supportVietQR: true,
-    supportVNPayQR: true
+    supportVNPayQR: false
   },
   {
     bank: BankKey.SHB,
@@ -332,7 +334,7 @@ export const BankApps: BankApp[] = [
     packageId: 'vn.com.techcombank.bb.app',
     appStoreId: 'id1548623362',
     supportVietQR: true,
-    supportVNPayQR: true
+    supportVNPayQR: false
   },
   {
     bank: BankKey.TPBANK,
@@ -340,7 +342,7 @@ export const BankApps: BankApp[] = [
     packageId: 'com.tpbankquickpay',
     appStoreId: 'id1292194225',
     supportVietQR: false,
-    supportVNPayQR: true
+    supportVNPayQR: false
   },
   {
     bank: BankKey.TPBANK,
@@ -371,7 +373,7 @@ export const BankApps: BankApp[] = [
     packageId: 'com.vn.vib.mobileapp',
     appStoreId: 'id949371011',
     supportVietQR: true,
-    supportVNPayQR: true
+    supportVNPayQR: false
   },
   {
     bank: BankKey.VIET_A_BANK,
@@ -418,7 +420,7 @@ export const BankApps: BankApp[] = [
     packageId: 'com.vnpay.vpbankonline',
     appStoreId: 'id1209349510',
     supportVietQR: true,
-    supportVNPayQR: true
+    supportVNPayQR: false
   },
   {
     bank: BankKey.VRB,
@@ -431,6 +433,6 @@ export const BankApps: BankApp[] = [
     packageId: 'vn.com.woori.smart',
     appStoreId: 'id1501785125',
     supportVietQR: true,
-    supportVNPayQR: true
+    supportVNPayQR: false
   }
 ]
