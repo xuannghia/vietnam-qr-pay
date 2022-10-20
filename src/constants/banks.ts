@@ -1,7 +1,7 @@
 import { BankCode } from './bank-code'
 import { BankKey } from './bank-key'
 
-interface Bank {
+export interface Bank {
   key: BankKey
   code: BankCode
   name: string
@@ -200,7 +200,7 @@ export const Banks: Bank[] = [
   {
     key: BankKey.IBK_HCM,
     code: BankCode.IBK_HCM,
-    name: 'Ngân hàng Công nghiệp Hàn Quốc - Chi nhánh TP. Hồ Chí Minh',
+    name: 'Ngân hàng Công nghiệp Hàn Quốc - Chi nhánh TP. Hồ Chí Minh',
     bin: '970456',
     shortName: 'IBK HCM',
     vietQRStatus: VietQRStatus.RECEIVE_ONLY,
@@ -210,7 +210,7 @@ export const Banks: Bank[] = [
   {
     key: BankKey.IBK_HN,
     code: BankCode.IBK_HN,
-    name: 'Ngân hàng Công nghiệp Hàn Quốc - Chi nhánh Hà Nội',
+    name: 'Ngân hàng Công nghiệp Hàn Quốc - Chi nhánh Hà Nội',
     bin: '970455',
     shortName: 'IBK HN',
     vietQRStatus: VietQRStatus.RECEIVE_ONLY,
@@ -290,7 +290,7 @@ export const Banks: Bank[] = [
   {
     key: BankKey.MSB,
     code: BankCode.MSB,
-    name: 'Ngân hàng TMCP Hàng Hải',
+    name: 'Ngân hàng TMCP Hàng Hải',
     bin: '970426',
     shortName: 'MSB',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
@@ -370,7 +370,7 @@ export const Banks: Bank[] = [
   {
     key: BankKey.PVCOM_BANK,
     code: BankCode.PVCOM_BANK,
-    name: 'Ngân hàng TMCP Đại Chúng Việt Nam',
+    name: 'Ngân hàng TMCP Đại Chúng Việt Nam',
     bin: '970412',
     shortName: 'PVcomBank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
@@ -410,7 +410,7 @@ export const Banks: Bank[] = [
   {
     key: BankKey.SEA_BANK,
     code: BankCode.SEA_BANK,
-    name: 'Ngân hàng TMCP Đông Nam Á',
+    name: 'Ngân hàng TMCP Đông Nam á',
     bin: '970440',
     shortName: 'SeABank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
@@ -490,7 +490,7 @@ export const Banks: Bank[] = [
   {
     key: BankKey.VIB,
     code: BankCode.VIB,
-    name: 'Ngân hàng TMCP Quốc tế Việt Nam',
+    name: 'Ngân hàng TMCP Quốc tế Việt Nam',
     bin: '970441',
     shortName: 'VIB',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
@@ -520,7 +520,7 @@ export const Banks: Bank[] = [
   {
     key: BankKey.VIETCAPITAL_BANK,
     code: BankCode.VIETCAPITAL_BANK,
-    name: 'Ngân hàng TMCP Bản Việt',
+    name: 'Ngân hàng TMCP Bản Việt',
     bin: '970454',
     shortName: 'VietCapitalBank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
@@ -530,7 +530,7 @@ export const Banks: Bank[] = [
   {
     key: BankKey.VIETCOMBANK,
     code: BankCode.VIETCOMBANK,
-    name: 'Ngân hàng TMCP Ngoại Thương Việt Nam',
+    name: 'Ngân hàng TMCP Ngoại Thương Việt Nam',
     bin: '970436',
     shortName: 'Vietcombank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
