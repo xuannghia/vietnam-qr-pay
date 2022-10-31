@@ -24,7 +24,7 @@ export const Banks: Bank[] = [
     code: BankCode.ABBANK,
     name: 'Ngân hàng TMCP An Bình',
     bin: '970425',
-    shortName: 'ABBANK',
+    shortName: 'AB Bank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
     swiftCode: 'ABBKVNVX'
@@ -54,7 +54,7 @@ export const Banks: Bank[] = [
     code: BankCode.BAC_A_BANK,
     name: 'Ngân hàng TMCP Bắc Á',
     bin: '970409',
-    shortName: 'BacABank',
+    shortName: 'BacA Bank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
     swiftCode: 'NASCVNVX'
@@ -64,7 +64,7 @@ export const Banks: Bank[] = [
     code: BankCode.BAOVIET_BANK,
     name: 'Ngân hàng TMCP Bảo Việt',
     bin: '970438',
-    shortName: 'BaoVietBank',
+    shortName: 'BaoViet Bank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
     swiftCode: 'BVBVVNVX'
@@ -92,7 +92,7 @@ export const Banks: Bank[] = [
     code: BankCode.CAKE,
     name: 'Ngân hàng số CAKE by VPBank - Ngân hàng TMCP Việt Nam Thịnh Vượng',
     bin: '546034',
-    shortName: 'CAKE',
+    shortName: 'CAKE by VPBank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
     swiftCode: null
@@ -102,7 +102,7 @@ export const Banks: Bank[] = [
     code: BankCode.CBBANK,
     name: 'Ngân hàng Thương mại TNHH MTV Xây dựng Việt Nam',
     bin: '970444',
-    shortName: 'CBBank',
+    shortName: 'CB Bank',
     vietQRStatus: VietQRStatus.RECEIVE_ONLY,
     lookupSupported: 0,
     swiftCode: 'GTBAVNVX'
@@ -112,7 +112,7 @@ export const Banks: Bank[] = [
     code: BankCode.CIMB,
     name: 'Ngân hàng TNHH MTV CIMB Việt Nam',
     bin: '422589',
-    shortName: 'CIMB',
+    shortName: 'CIMB Bank',
     vietQRStatus: VietQRStatus.RECEIVE_ONLY,
     lookupSupported: 1,
     swiftCode: 'CIBBVNVN'
@@ -122,7 +122,7 @@ export const Banks: Bank[] = [
     code: BankCode.COOP_BANK,
     name: 'Ngân hàng Hợp tác xã Việt Nam',
     bin: '970446',
-    shortName: 'COOPBANK',
+    shortName: 'Co-op Bank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
     swiftCode: null
@@ -130,9 +130,9 @@ export const Banks: Bank[] = [
   {
     key: BankKey.DBS_BANK,
     code: BankCode.DBS_BANK,
-    name: 'DBS Bank Ltd - Chi nhánh Thành phố Hồ Chí Minh',
+    name: 'NH TNHH MTV Phát triển Singapore - Chi nhánh TP. Hồ Chí Minh',
     bin: '796500',
-    shortName: 'DBSBank',
+    shortName: 'DBS Bank',
     vietQRStatus: VietQRStatus.RECEIVE_ONLY,
     lookupSupported: 0,
     swiftCode: 'DBSSVNVX'
@@ -142,7 +142,7 @@ export const Banks: Bank[] = [
     code: BankCode.DONG_A_BANK,
     name: 'Ngân hàng TMCP Đông Á',
     bin: '970406',
-    shortName: 'DongABank',
+    shortName: 'DongA Bank',
     vietQRStatus: VietQRStatus.RECEIVE_ONLY,
     lookupSupported: 1,
     swiftCode: 'EACBVNVX'
@@ -170,7 +170,7 @@ export const Banks: Bank[] = [
   {
     key: BankKey.HDBANK,
     code: BankCode.HDBANK,
-    name: 'Ngân hàng TMCP Phát triển Thành phố Hồ Chí Minh',
+    name: 'Ngân hàng TMCP Phát triển TP. Hồ Chí Minh',
     bin: '970437',
     shortName: 'HDBank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
@@ -182,7 +182,7 @@ export const Banks: Bank[] = [
     code: BankCode.HONGLEONG_BANK,
     name: 'Ngân hàng TNHH MTV Hong Leong Việt Nam',
     bin: '970442',
-    shortName: 'HongLeong',
+    shortName: 'HongLeong Bank',
     vietQRStatus: VietQRStatus.RECEIVE_ONLY,
     lookupSupported: 0,
     swiftCode: 'HLBBVNVX'
@@ -192,7 +192,7 @@ export const Banks: Bank[] = [
     code: BankCode.HSBC,
     name: 'Ngân hàng TNHH MTV HSBC (Việt Nam)',
     bin: '458761',
-    shortName: 'HSBC',
+    shortName: 'HSBC Vietnam',
     vietQRStatus: VietQRStatus.RECEIVE_ONLY,
     lookupSupported: 1,
     swiftCode: 'HSBCVNVX'
@@ -222,7 +222,7 @@ export const Banks: Bank[] = [
     code: BankCode.INDOVINA_BANK,
     name: 'Ngân hàng TNHH Indovina',
     bin: '970434',
-    shortName: 'IndovinaBank',
+    shortName: 'Indovina Bank',
     vietQRStatus: VietQRStatus.RECEIVE_ONLY,
     lookupSupported: 1,
     swiftCode: null
@@ -230,9 +230,9 @@ export const Banks: Bank[] = [
   {
     key: BankKey.KASIKORN_BANK,
     code: BankCode.KASIKORN_BANK,
-    name: 'Ngân hàng Đại chúng TNHH Kasikornbank',
+    name: 'Ngân hàng Đại chúng TNHH KASIKORNBANK - CN TP. Hồ Chí Minh',
     bin: '668888',
-    shortName: 'KBank',
+    shortName: 'Kasikorn Bank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 0,
     swiftCode: 'KASIVNVX'
@@ -242,7 +242,7 @@ export const Banks: Bank[] = [
     code: BankCode.KIENLONG_BANK,
     name: 'Ngân hàng TMCP Kiên Long',
     bin: '970452',
-    shortName: 'KienLongBank',
+    shortName: 'KienlongBank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
     swiftCode: 'KLBKVNVX'
@@ -250,9 +250,9 @@ export const Banks: Bank[] = [
   {
     key: BankKey.KOOKMIN_BANK_HCM,
     code: BankCode.KOOKMIN_BANK_HCM,
-    name: 'Ngân hàng Kookmin - Chi nhánh Thành phố Hồ Chí Minh',
+    name: 'Ngân hàng Kookmin - Chi nhánh TP. Hồ Chí Minh',
     bin: '970463',
-    shortName: 'KookminHCM',
+    shortName: 'Kookmin Bank HCM',
     vietQRStatus: VietQRStatus.RECEIVE_ONLY,
     lookupSupported: 0,
     swiftCode: null
@@ -262,7 +262,7 @@ export const Banks: Bank[] = [
     code: BankCode.KOOKMIN_BANK_HN,
     name: 'Ngân hàng Kookmin - Chi nhánh Hà Nội',
     bin: '970462',
-    shortName: 'KookminHN',
+    shortName: 'Kookmin Bank HN',
     vietQRStatus: VietQRStatus.RECEIVE_ONLY,
     lookupSupported: 0,
     swiftCode: null
@@ -282,7 +282,7 @@ export const Banks: Bank[] = [
     code: BankCode.MBBANK,
     name: 'Ngân hàng TMCP Quân đội',
     bin: '970422',
-    shortName: 'MBBank',
+    shortName: 'MB Bank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
     swiftCode: 'MSCBVNVX'
@@ -302,7 +302,7 @@ export const Banks: Bank[] = [
     code: BankCode.NAM_A_BANK,
     name: 'Ngân hàng TMCP Nam Á',
     bin: '970428',
-    shortName: 'NamABank',
+    shortName: 'Nam A Bank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
     swiftCode: 'NAMAVNVX'
@@ -312,7 +312,7 @@ export const Banks: Bank[] = [
     code: BankCode.NCB,
     name: 'Ngân hàng TMCP Quốc Dân',
     bin: '970419',
-    shortName: 'NCB',
+    shortName: 'NCB Bank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
     swiftCode: 'NVBAVNVX'
@@ -322,7 +322,7 @@ export const Banks: Bank[] = [
     code: BankCode.NONGHYUP_BANK_HN,
     name: 'Ngân hàng Nonghyup - Chi nhánh Hà Nội',
     bin: '801011',
-    shortName: 'Nonghyup',
+    shortName: 'Nonghyup Bank',
     vietQRStatus: VietQRStatus.RECEIVE_ONLY,
     lookupSupported: 0,
     swiftCode: null
@@ -332,7 +332,7 @@ export const Banks: Bank[] = [
     code: BankCode.OCB,
     name: 'Ngân hàng TMCP Phương Đông',
     bin: '970448',
-    shortName: 'OCB',
+    shortName: 'OCB Bank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
     swiftCode: 'ORCOVNVX'
@@ -342,7 +342,7 @@ export const Banks: Bank[] = [
     code: BankCode.OCEANBANK,
     name: 'Ngân hàng Thương mại TNHH MTV Đại Dương',
     bin: '970414',
-    shortName: 'Oceanbank',
+    shortName: 'Ocean Bank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
     swiftCode: 'OCBKUS3M'
@@ -352,7 +352,7 @@ export const Banks: Bank[] = [
     code: BankCode.PGBANK,
     name: 'Ngân hàng TMCP Xăng dầu Petrolimex',
     bin: '970430',
-    shortName: 'PGBank',
+    shortName: 'PG Bank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
     swiftCode: 'PGBLVNVX'
@@ -362,7 +362,7 @@ export const Banks: Bank[] = [
     code: BankCode.PUBLIC_BANK,
     name: 'Ngân hàng TNHH MTV Public Việt Nam',
     bin: '970439',
-    shortName: 'PublicBank',
+    shortName: 'Public Bank Vietnam',
     vietQRStatus: VietQRStatus.RECEIVE_ONLY,
     lookupSupported: 1,
     swiftCode: 'VIDPVNVX'
@@ -410,7 +410,7 @@ export const Banks: Bank[] = [
   {
     key: BankKey.SEA_BANK,
     code: BankCode.SEA_BANK,
-    name: 'Ngân hàng TMCP Đông Nam á',
+    name: 'Ngân hàng TMCP Đông Nam Á',
     bin: '970440',
     shortName: 'SeABank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
@@ -432,7 +432,7 @@ export const Banks: Bank[] = [
     code: BankCode.SHINHAN_BANK,
     name: 'Ngân hàng TNHH MTV Shinhan Việt Nam',
     bin: '970424',
-    shortName: 'ShinhanBank',
+    shortName: 'Shinhan Bank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
     swiftCode: 'SHBKVNVX'
@@ -442,7 +442,7 @@ export const Banks: Bank[] = [
     code: BankCode.STANDARD_CHARTERED_BANK,
     name: 'Ngân hàng TNHH MTV Standard Chartered Bank Việt Nam',
     bin: '970410',
-    shortName: 'StandardChartered',
+    shortName: 'Standard Chartered Vietnam',
     vietQRStatus: VietQRStatus.RECEIVE_ONLY,
     lookupSupported: 1,
     swiftCode: 'SCBLVNVX'
@@ -472,7 +472,7 @@ export const Banks: Bank[] = [
     code: BankCode.UBANK,
     name: 'Ngân hàng số Ubank by VPBank - Ngân hàng TMCP Việt Nam Thịnh Vượng',
     bin: '546035',
-    shortName: 'Ubank',
+    shortName: 'Ubank by VPBank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
     swiftCode: null
@@ -480,9 +480,9 @@ export const Banks: Bank[] = [
   {
     key: BankKey.UNITED_OVERSEAS_BANK,
     code: BankCode.UNITED_OVERSEAS_BANK,
-    name: 'Ngân hàng United Overseas - Chi nhánh TP. Hồ Chí Minh',
+    name: 'Ngân hàng United Overseas Bank Việt Nam',
     bin: '970458',
-    shortName: 'UnitedOverseas',
+    shortName: 'United Overseas Bank Vietnam',
     vietQRStatus: VietQRStatus.RECEIVE_ONLY,
     lookupSupported: 1,
     swiftCode: null
@@ -522,7 +522,7 @@ export const Banks: Bank[] = [
     code: BankCode.VIETCAPITAL_BANK,
     name: 'Ngân hàng TMCP Bản Việt',
     bin: '970454',
-    shortName: 'VietCapitalBank',
+    shortName: 'Viet Capital Bank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
     swiftCode: 'VCBCVNVX'
@@ -562,7 +562,7 @@ export const Banks: Bank[] = [
     code: BankCode.VRB,
     name: 'Ngân hàng Liên doanh Việt - Nga',
     bin: '970421',
-    shortName: 'VRB',
+    shortName: 'VietNgaBank',
     vietQRStatus: VietQRStatus.RECEIVE_ONLY,
     lookupSupported: 1,
     swiftCode: null
@@ -572,7 +572,7 @@ export const Banks: Bank[] = [
     code: BankCode.WOORI_BANK,
     name: 'Ngân hàng TNHH MTV Woori Việt Nam',
     bin: '970457',
-    shortName: 'Woori',
+    shortName: 'Woori Bank',
     vietQRStatus: VietQRStatus.RECEIVE_ONLY,
     lookupSupported: 1,
     swiftCode: null

@@ -56,7 +56,7 @@ export const BankApps: BankApp[] = [
     scheme: 'bidcvnmobile',
     packageId: 'com.vnpay.bidc',
     appStoreId: 'id1043501726',
-    supportVietQR: true,
+    supportVietQR: false,
     supportVNPayQR: true
   },
   {
