@@ -10,6 +10,7 @@ export interface Bank {
   vietQRStatus: number
   lookupSupported?: number
   swiftCode?: string | null
+  keywords?: string
 }
 
 export enum VietQRStatus {
@@ -27,7 +28,8 @@ export const Banks: Bank[] = [
     shortName: 'AB Bank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
-    swiftCode: 'ABBKVNVX'
+    swiftCode: 'ABBKVNVX',
+    keywords: 'anbinh'
   },
   {
     key: BankKey.ACB,
@@ -37,7 +39,8 @@ export const Banks: Bank[] = [
     shortName: 'ACB',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
-    swiftCode: 'ASCBVNVX'
+    swiftCode: 'ASCBVNVX',
+    keywords: 'achau'
   },
   {
     key: BankKey.AGRIBANK,
@@ -47,7 +50,8 @@ export const Banks: Bank[] = [
     shortName: 'Agribank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
-    swiftCode: 'VBAAVNVX'
+    swiftCode: 'VBAAVNVX',
+    keywords: 'nongnghiep, nongthon, agribank, agri'
   },
   {
     key: BankKey.BAC_A_BANK,
@@ -57,7 +61,8 @@ export const Banks: Bank[] = [
     shortName: 'BacA Bank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
-    swiftCode: 'NASCVNVX'
+    swiftCode: 'NASCVNVX',
+    keywords: 'baca, NASB'
   },
   {
     key: BankKey.BAOVIET_BANK,
@@ -67,7 +72,8 @@ export const Banks: Bank[] = [
     shortName: 'BaoViet Bank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
-    swiftCode: 'BVBVVNVX'
+    swiftCode: 'BVBVVNVX',
+    keywords: 'baoviet, BVB'
   },
   {
     key: BankKey.BIDC,
@@ -105,7 +111,8 @@ export const Banks: Bank[] = [
     shortName: 'CB Bank',
     vietQRStatus: VietQRStatus.RECEIVE_ONLY,
     lookupSupported: 0,
-    swiftCode: 'GTBAVNVX'
+    swiftCode: 'GTBAVNVX',
+    keywords: 'xaydungvn, xaydung'
   },
   {
     key: BankKey.CIMB,
@@ -115,7 +122,8 @@ export const Banks: Bank[] = [
     shortName: 'CIMB Bank',
     vietQRStatus: VietQRStatus.RECEIVE_ONLY,
     lookupSupported: 1,
-    swiftCode: 'CIBBVNVN'
+    swiftCode: 'CIBBVNVN',
+    keywords: 'cimbvn'
   },
   {
     key: BankKey.COOP_BANK,
@@ -125,7 +133,8 @@ export const Banks: Bank[] = [
     shortName: 'Co-op Bank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
-    swiftCode: null
+    swiftCode: null,
+    keywords: 'hoptacxa, coop'
   },
   {
     key: BankKey.DBS_BANK,
@@ -135,7 +144,8 @@ export const Banks: Bank[] = [
     shortName: 'DBS Bank',
     vietQRStatus: VietQRStatus.RECEIVE_ONLY,
     lookupSupported: 0,
-    swiftCode: 'DBSSVNVX'
+    swiftCode: 'DBSSVNVX',
+    keywords: 'dbshcm'
   },
   {
     key: BankKey.DONG_A_BANK,
@@ -145,7 +155,8 @@ export const Banks: Bank[] = [
     shortName: 'DongA Bank',
     vietQRStatus: VietQRStatus.RECEIVE_ONLY,
     lookupSupported: 1,
-    swiftCode: 'EACBVNVX'
+    swiftCode: 'EACBVNVX',
+    keywords: 'donga, DAB'
   },
   {
     key: BankKey.EXIMBANK,
@@ -165,7 +176,8 @@ export const Banks: Bank[] = [
     shortName: 'GPBank',
     vietQRStatus: VietQRStatus.RECEIVE_ONLY,
     lookupSupported: 1,
-    swiftCode: 'GBNKVNVX'
+    swiftCode: 'GBNKVNVX',
+    keywords: 'daukhi'
   },
   {
     key: BankKey.HDBANK,
@@ -185,7 +197,8 @@ export const Banks: Bank[] = [
     shortName: 'HongLeong Bank',
     vietQRStatus: VietQRStatus.RECEIVE_ONLY,
     lookupSupported: 0,
-    swiftCode: 'HLBBVNVX'
+    swiftCode: 'HLBBVNVX',
+    keywords: 'HLBVN'
   },
   {
     key: BankKey.HSBC,
@@ -205,7 +218,8 @@ export const Banks: Bank[] = [
     shortName: 'IBK HCM',
     vietQRStatus: VietQRStatus.RECEIVE_ONLY,
     lookupSupported: 0,
-    swiftCode: null
+    swiftCode: null,
+    keywords: 'congnghiep'
   },
   {
     key: BankKey.IBK_HN,
@@ -215,7 +229,8 @@ export const Banks: Bank[] = [
     shortName: 'IBK HN',
     vietQRStatus: VietQRStatus.RECEIVE_ONLY,
     lookupSupported: 0,
-    swiftCode: null
+    swiftCode: null,
+    keywords: 'congnghiep'
   },
   {
     key: BankKey.INDOVINA_BANK,
@@ -275,7 +290,8 @@ export const Banks: Bank[] = [
     shortName: 'LienVietPostBank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
-    swiftCode: 'LVBKVNVX'
+    swiftCode: 'LVBKVNVX',
+    keywords: 'lienvietbank'
   },
   {
     key: BankKey.MBBANK,
@@ -295,7 +311,8 @@ export const Banks: Bank[] = [
     shortName: 'MSB',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
-    swiftCode: 'MCOBVNVX'
+    swiftCode: 'MCOBVNVX',
+    keywords: 'hanghai'
   },
   {
     key: BankKey.NAM_A_BANK,
@@ -305,7 +322,8 @@ export const Banks: Bank[] = [
     shortName: 'Nam A Bank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
-    swiftCode: 'NAMAVNVX'
+    swiftCode: 'NAMAVNVX',
+    keywords: 'namabank'
   },
   {
     key: BankKey.NCB,
@@ -315,7 +333,8 @@ export const Banks: Bank[] = [
     shortName: 'NCB Bank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
-    swiftCode: 'NVBAVNVX'
+    swiftCode: 'NVBAVNVX',
+    keywords: 'quocdan'
   },
   {
     key: BankKey.NONGHYUP_BANK_HN,
@@ -335,7 +354,8 @@ export const Banks: Bank[] = [
     shortName: 'OCB Bank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
-    swiftCode: 'ORCOVNVX'
+    swiftCode: 'ORCOVNVX',
+    keywords: 'phuongdong'
   },
   {
     key: BankKey.OCEANBANK,
@@ -345,7 +365,8 @@ export const Banks: Bank[] = [
     shortName: 'Ocean Bank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
-    swiftCode: 'OCBKUS3M'
+    swiftCode: 'OCBKUS3M',
+    keywords: 'daiduong'
   },
   {
     key: BankKey.PGBANK,
@@ -365,7 +386,8 @@ export const Banks: Bank[] = [
     shortName: 'Public Bank Vietnam',
     vietQRStatus: VietQRStatus.RECEIVE_ONLY,
     lookupSupported: 1,
-    swiftCode: 'VIDPVNVX'
+    swiftCode: 'VIDPVNVX',
+    keywords: 'publicvn'
   },
   {
     key: BankKey.PVCOM_BANK,
@@ -375,7 +397,8 @@ export const Banks: Bank[] = [
     shortName: 'PVcomBank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
-    swiftCode: 'WBVNVNVX'
+    swiftCode: 'WBVNVNVX',
+    keywords: 'daichung'
   },
   {
     key: BankKey.SACOMBANK,
@@ -395,7 +418,8 @@ export const Banks: Bank[] = [
     shortName: 'SaigonBank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
-    swiftCode: 'SBITVNVX'
+    swiftCode: 'SBITVNVX',
+    keywords: 'saigoncongthuong, saigonbank'
   },
   {
     key: BankKey.SCB,
@@ -405,7 +429,8 @@ export const Banks: Bank[] = [
     shortName: 'SCB',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
-    swiftCode: 'SACLVNVX'
+    swiftCode: 'SACLVNVX',
+    keywords: 'saigon'
   },
   {
     key: BankKey.SEA_BANK,
@@ -425,7 +450,8 @@ export const Banks: Bank[] = [
     shortName: 'SHB',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
-    swiftCode: 'SHBAVNVX'
+    swiftCode: 'SHBAVNVX',
+    keywords: 'saigonhanoi, sghn'
   },
   {
     key: BankKey.SHINHAN_BANK,
@@ -465,7 +491,8 @@ export const Banks: Bank[] = [
     shortName: 'TPBank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
-    swiftCode: 'TPBVVNVX'
+    swiftCode: 'TPBVVNVX',
+    keywords: 'tienphong'
   },
   {
     key: BankKey.UBANK,
@@ -495,7 +522,8 @@ export const Banks: Bank[] = [
     shortName: 'VIB',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
-    swiftCode: 'VNIBVNVX'
+    swiftCode: 'VNIBVNVX',
+    keywords: 'quocte'
   },
   {
     key: BankKey.VIET_A_BANK,
@@ -515,7 +543,8 @@ export const Banks: Bank[] = [
     shortName: 'VietBank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
-    swiftCode: 'VNTTVNVX'
+    swiftCode: 'VNTTVNVX',
+    keywords: 'vietnamthuongtin, vnthuongtin'
   },
   {
     key: BankKey.VIETCAPITAL_BANK,
@@ -525,7 +554,8 @@ export const Banks: Bank[] = [
     shortName: 'Viet Capital Bank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
-    swiftCode: 'VCBCVNVX'
+    swiftCode: 'VCBCVNVX',
+    keywords: 'banviet'
   },
   {
     key: BankKey.VIETCOMBANK,
@@ -545,7 +575,8 @@ export const Banks: Bank[] = [
     shortName: 'VietinBank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
-    swiftCode: 'ICBVVNVX'
+    swiftCode: 'ICBVVNVX',
+    keywords: 'viettin' // Some users may use this keyword
   },
   {
     key: BankKey.VPBANK,
@@ -555,7 +586,8 @@ export const Banks: Bank[] = [
     shortName: 'VPBank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
-    swiftCode: 'VPBKVNVX'
+    swiftCode: 'VPBKVNVX',
+    keywords: 'vnthinhvuong'
   },
   {
     key: BankKey.VRB,
@@ -565,7 +597,8 @@ export const Banks: Bank[] = [
     shortName: 'VietNgaBank',
     vietQRStatus: VietQRStatus.RECEIVE_ONLY,
     lookupSupported: 1,
-    swiftCode: null
+    swiftCode: null,
+    keywords: 'vietnam-russia, vrbank'
   },
   {
     key: BankKey.WOORI_BANK,
