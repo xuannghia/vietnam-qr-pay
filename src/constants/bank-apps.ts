@@ -207,7 +207,7 @@ export const BankApps: BankApp[] = [
     scheme: 'msbmobile',
     packageId: 'vn.com.msb.smartBanking',
     appStoreId: 'id436134873',
-    supportVietQR: true,
+    supportVietQR: false,
     supportVNPayQR: false
   },
   {
