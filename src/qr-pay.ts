@@ -38,8 +38,8 @@ export class QRPay {
   }
 
   public build (): string {
-    const version = QRPay.genFieldData(FieldID.VERSION, this.version)
-    const initMethod = QRPay.genFieldData(FieldID.INIT_METHOD, this.initMethod)
+    const version = QRPay.genFieldData(FieldID.VERSION, this.version ?? '01')
+    const initMethod = QRPay.genFieldData(FieldID.INIT_METHOD, this.initMethod ?? '11')
 
     const guid = QRPay.genFieldData(ProviderFieldID.GUID, this.provider.guid)
 
@@ -56,12 +56,12 @@ export class QRPay {
     const providerData = QRPay.genFieldData(this.provider.fieldId, guid + provider + service)
 
     const category = QRPay.genFieldData(FieldID.CATEGORY, this.category)
-    const currency = QRPay.genFieldData(FieldID.CURRENCY, this.currency)
+    const currency = QRPay.genFieldData(FieldID.CURRENCY, this.currency ?? '704')
     const amountStr = QRPay.genFieldData(FieldID.AMOUNT, this.amount)
     const tipAndFeeType = QRPay.genFieldData(FieldID.TIP_AND_FEE_TYPE, this.tipAndFeeType)
     const tipAndFeeAmount = QRPay.genFieldData(FieldID.TIP_AND_FEE_AMOUNT, this.tipAndFeeAmount)
     const tipAndFeePercent = QRPay.genFieldData(FieldID.TIP_AND_FEE_PERCENT, this.tipAndFeePercent)
-    const nation = QRPay.genFieldData(FieldID.NATION, this.nation)
+    const nation = QRPay.genFieldData(FieldID.NATION, this.nation ?? 'VN')
     const acquier = QRPay.genFieldData(FieldID.ACQUIER, this.acquier)
     const city = QRPay.genFieldData(FieldID.CITY, this.city)
     const zipCode = QRPay.genFieldData(FieldID.ZIP_CODE, this.zipCode)
