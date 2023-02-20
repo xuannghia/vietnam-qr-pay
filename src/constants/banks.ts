@@ -484,6 +484,17 @@ export const Banks: Bank[] = [
     swiftCode: 'VTCBVNVX'
   },
   {
+    key: BankKey.TIMO,
+    code: BankCode.TIMO,
+    name: 'Ngân hàng số Timo by Bản Việt Bank',
+    bin: '963388',
+    shortName: 'Timo',
+    vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
+    lookupSupported: 1,
+    swiftCode: null,
+    keywords: 'timo, banviet'
+  },
+  {
     key: BankKey.TPBANK,
     code: BankCode.TPBANK,
     name: 'Ngân hàng TMCP Tiên Phong',

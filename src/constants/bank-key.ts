@@ -43,6 +43,7 @@ export enum BankKey {
   SHINHAN_BANK = 'shinhanbank',
   STANDARD_CHARTERED_BANK = 'standardcharteredbank',
   TECHCOMBANK = 'techcombank',
+  TIMO = 'timo',
   TPBANK = 'tpbank',
   UBANK = 'ubank',
   UNITED_OVERSEAS_BANK = 'uob',

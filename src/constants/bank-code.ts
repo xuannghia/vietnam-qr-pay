@@ -43,6 +43,7 @@ export enum BankCode {
   SHINHAN_BANK = 'SVB',
   STANDARD_CHARTERED_BANK = 'SC',
   TECHCOMBANK = 'TCB',
+  TIMO = 'TIMO',
   TPBANK = 'TPB',
   UBANK = 'UBANK',
   UNITED_OVERSEAS_BANK = 'UOB',

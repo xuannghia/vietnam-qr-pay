@@ -337,6 +337,14 @@ export const BankApps: BankApp[] = [
     supportVNPayQR: false
   },
   {
+    bank: BankKey.TIMO,
+    scheme: 'plus',
+    packageId: 'io.lifestyle.plus',
+    appStoreId: 'id1521230347',
+    supportVietQR: true,
+    supportVNPayQR: false
+  },
+  {
     bank: BankKey.TPBANK,
     scheme: 'tpbankmobile',
     packageId: 'com.tpbankquickpay',
