@@ -369,9 +369,9 @@ export const BankApps: BankApp[] = [
   },
   {
     bank: BankKey.VIB,
-    scheme: 'vibmobile',
-    packageId: 'com.vn.vib.mobileapp',
-    appStoreId: 'id949371011',
+    scheme: 'myvib2',
+    packageId: 'com.vib.myvib2',
+    appStoreId: 'id1626624790',
     supportVietQR: true,
     supportVNPayQR: false
   },
