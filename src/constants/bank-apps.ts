@@ -212,11 +212,11 @@ export const BankApps: BankApp[] = [
   },
   {
     bank: BankKey.NAM_A_BANK,
-    scheme: 'namabankmobile',
-    packageId: 'com.vnpay.namabank',
-    appStoreId: 'id1227187853',
+    scheme: 'deeplinkapp',
+    packageId: 'ops.namabank.com.vn',
+    appStoreId: 'id1456997296',
     supportVietQR: true,
-    supportVNPayQR: true
+    supportVNPayQR: false
   },
   {
     bank: BankKey.NCB,
