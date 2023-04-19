@@ -212,11 +212,11 @@ export const BankApps: BankApp[] = [
   },
   {
     bank: BankKey.NAM_A_BANK,
-    scheme: 'namabankmobile',
-    packageId: 'com.vnpay.namabank',
-    appStoreId: 'id1227187853',
+    scheme: 'deeplinkapp',
+    packageId: 'ops.namabank.com.vn',
+    appStoreId: 'id1456997296',
     supportVietQR: true,
-    supportVNPayQR: true
+    supportVNPayQR: false
   },
   {
     bank: BankKey.NCB,
@@ -377,9 +377,9 @@ export const BankApps: BankApp[] = [
   },
   {
     bank: BankKey.VIB,
-    scheme: 'vibmobile',
-    packageId: 'com.vn.vib.mobileapp',
-    appStoreId: 'id949371011',
+    scheme: 'myvib2',
+    packageId: 'com.vib.myvib2',
+    appStoreId: 'id1626624790',
     supportVietQR: true,
     supportVNPayQR: false
   },
