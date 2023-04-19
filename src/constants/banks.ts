@@ -490,9 +490,9 @@ export const Banks: Bank[] = [
     bin: '963388',
     shortName: 'Timo',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
-    lookupSupported: 1,
+    lookupSupported: 0,
     swiftCode: null,
-    keywords: 'timo, banviet'
+    keywords: 'banviet'
   },
   {
     key: BankKey.TPBANK,
