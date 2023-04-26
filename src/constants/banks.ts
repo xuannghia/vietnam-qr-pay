@@ -110,7 +110,7 @@ export const Banks: Bank[] = [
     bin: '970444',
     shortName: 'CB Bank',
     vietQRStatus: VietQRStatus.RECEIVE_ONLY,
-    lookupSupported: 0,
+    lookupSupported: 1,
     swiftCode: 'GTBAVNVX',
     keywords: 'xaydungvn, xaydung'
   },
@@ -196,7 +196,7 @@ export const Banks: Bank[] = [
     bin: '970442',
     shortName: 'HongLeong Bank',
     vietQRStatus: VietQRStatus.RECEIVE_ONLY,
-    lookupSupported: 0,
+    lookupSupported: 1,
     swiftCode: 'HLBBVNVX',
     keywords: 'HLBVN'
   },
@@ -249,7 +249,7 @@ export const Banks: Bank[] = [
     bin: '668888',
     shortName: 'Kasikorn Bank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
-    lookupSupported: 0,
+    lookupSupported: 1,
     swiftCode: 'KASIVNVX'
   },
   {
