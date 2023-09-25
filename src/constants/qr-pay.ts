@@ -20,7 +20,7 @@ export enum FieldID {
   TIP_AND_FEE_AMOUNT = '56',
   TIP_AND_FEE_PERCENT = '57',
   NATION = '58',
-  ACQUIER = '59',
+  MERCHANT_NAME = '59',
   CITY = '60',
   ZIP_CODE = '61',
   ADDITIONAL_DATA = '62',
@@ -34,8 +34,8 @@ export enum ProviderFieldID {
 }
 
 export enum VietQRSevice {
-  BY_ACCOUNT_NUMBER = 'QRIBFTTA', // Dịch vụ chuyển nhanh đến Tài khoản
-  BY_CARD_NUMBER = 'QRIBFTTC' // Dịch vụ chuyển nhanh đến Thẻ
+  BY_ACCOUNT_NUMBER = 'QRIBFTTA', // Dịch vụ chuyển nhanh NAPAS247 đến Tài khoản
+  BY_CARD_NUMBER = 'QRIBFTTC' // Dịch vụ chuyển nhanh NAPAS247 đến Thẻ
 }
 
 export enum VietQRConsumerFieldID {
@@ -80,5 +80,6 @@ export class Consumer {
 }
 
 export class Merchant {
-  merchantId?: string
+  id?: string
+  name?: string
 }

@@ -1,4 +1,4 @@
-import { FieldID, QRProvider, VietQRConsumerFieldID, Consumer, AdditionalDataID, Prodiver, AdditionalData, QRProviderGUID, ProviderFieldID, Merchant } from './constants'
+import { FieldID, QRProvider, VietQRConsumerFieldID, Consumer, AdditionalDataID, Prodiver, AdditionalData, QRProviderGUID, ProviderFieldID, Merchant, VietQRSevice } from './constants'
 import { crc16ccitt } from './crc16'
 export class QRPay {
   isValid = true
@@ -14,13 +14,12 @@ export class QRPay {
   tipAndFeeAmount?: string
   tipAndFeePercent?: string
   nation?: string
-  acquier?: string
   city?: string
   zipCode?: string
   additionalData: AdditionalData
   crc?: string
 
-  constructor (content?: string) {
+  constructor(content?: string) {
     this.provider = new Prodiver()
     this.consumer = new Consumer()
     this.merchant = new Merchant()
@@ -28,7 +27,7 @@ export class QRPay {
     this.parse(content ?? '')
   }
 
-  public parse (content: string): void {
+  public parse(content: string): void {
     if (content.length < 4) return this.invalid()
     // verify CRC
     const crcValid = QRPay.verifyCRC(content)
@@ -37,7 +36,7 @@ export class QRPay {
     this.parseRootContent(content)
   }
 
-  public build (): string {
+  public build(): string {
     const version = QRPay.genFieldData(FieldID.VERSION, this.version ?? '01')
     const initMethod = QRPay.genFieldData(FieldID.INIT_METHOD, this.initMethod ?? '11')
 
@@ -49,7 +48,7 @@ export class QRPay {
       const bankNumber = QRPay.genFieldData(VietQRConsumerFieldID.BANK_NUMBER, this.consumer.bankNumber)
       providerDataContent = bankBin + bankNumber
     } else if (this.provider.guid === QRProviderGUID.VNPAY) {
-      providerDataContent = this.merchant.merchantId ?? ''
+      providerDataContent = this.merchant.id ?? ''
     }
     const provider = QRPay.genFieldData(ProviderFieldID.DATA, providerDataContent)
     const service = QRPay.genFieldData(ProviderFieldID.SERVICE, this.provider.service)
@@ -62,7 +61,7 @@ export class QRPay {
     const tipAndFeeAmount = QRPay.genFieldData(FieldID.TIP_AND_FEE_AMOUNT, this.tipAndFeeAmount)
     const tipAndFeePercent = QRPay.genFieldData(FieldID.TIP_AND_FEE_PERCENT, this.tipAndFeePercent)
     const nation = QRPay.genFieldData(FieldID.NATION, this.nation ?? 'VN')
-    const acquier = QRPay.genFieldData(FieldID.ACQUIER, this.acquier)
+    const merchantName = QRPay.genFieldData(FieldID.MERCHANT_NAME, this.merchant.name)
     const city = QRPay.genFieldData(FieldID.CITY, this.city)
     const zipCode = QRPay.genFieldData(FieldID.ZIP_CODE, this.zipCode)
 
@@ -79,11 +78,56 @@ export class QRPay {
     const additionalDataContent = buildNumber + mobileNumber + storeLabel + loyaltyNumber + reference + customerLabel + terminal + purpose + dataRequest
     const additionalData = QRPay.genFieldData(FieldID.ADDITIONAL_DATA, additionalDataContent)
 
-    const content = `${version}${initMethod}${providerData}${category}${currency}${amountStr}${tipAndFeeType}${tipAndFeeAmount}${tipAndFeePercent}${nation}${acquier}${city}${zipCode}${additionalData}${FieldID.CRC}04`
+    const content = `${version}${initMethod}${providerData}${category}${currency}${amountStr}${tipAndFeeType}${tipAndFeeAmount}${tipAndFeePercent}${nation}${merchantName}${city}${zipCode}${additionalData}${FieldID.CRC}04`
     const crc = QRPay.genCRCCode(content)
     return content + crc
   }
 
+  public static initVietQR (options: { bankBin: string, bankNumber: string, amount?: string, purpose?: string, service?: VietQRSevice }): QRPay {
+    const qr = new QRPay()
+    qr.initMethod = options.amount ? '12' : '11'
+    qr.provider.fieldId = FieldID.VIETQR
+    qr.provider.guid = QRProviderGUID.VIETQR
+    qr.provider.name = QRProvider.VIETQR
+    qr.provider.service = options.service || VietQRSevice.BY_ACCOUNT_NUMBER
+    qr.consumer.bankBin = options.bankBin
+    qr.consumer.bankNumber = options.bankNumber
+    qr.amount = options.amount
+    qr.additionalData.purpose = options.purpose
+    return qr
+  }
+
+  public static initVNPayQR (options: { 
+    merchantId: string,
+    merchantName: string,
+    store: string,
+    terminal: string,
+    // additional data
+    amount?: string,
+    purpose?: string,
+    billNumber?: string 
+    mobileNumber?: string,
+    loyaltyNumber?: string,
+    reference?: string,
+    customerLabel?: string,
+  }): QRPay {
+    const qr = new QRPay()
+    qr.merchant.id = options.merchantId
+    qr.merchant.name = options.merchantName
+    qr.provider.fieldId = FieldID.VNPAYQR
+    qr.provider.guid = QRProviderGUID.VNPAY
+    qr.provider.name = QRProvider.VNPAY
+    qr.amount = options.amount
+    qr.additionalData.purpose = options.purpose
+    qr.additionalData.billNumber = options.billNumber
+    qr.additionalData.mobileNumber = options.mobileNumber
+    qr.additionalData.store = options.store
+    qr.additionalData.terminal = options.terminal
+    qr.additionalData.loyaltyNumber = options.loyaltyNumber
+    qr.additionalData.reference = options.reference
+    qr.additionalData.customerLabel = options.customerLabel
+    return qr
+  }
   private parseRootContent (content: string): void {
     const { id, length, value, nextValue } = QRPay.sliceContent(content)
     if (value.length !== length) return this.invalid()
@@ -120,8 +164,8 @@ export class QRPay {
       case FieldID.NATION:
         this.nation = value
         break
-      case FieldID.ACQUIER:
-        this.acquier = value
+      case FieldID.MERCHANT_NAME:
+        this.merchant.name = value
         break
       case FieldID.CITY:
         this.city = value
@@ -150,7 +194,7 @@ export class QRPay {
       case ProviderFieldID.DATA:
         if (this.provider.guid === QRProviderGUID.VNPAY) {
           this.provider.name = QRProvider.VNPAY
-          this.merchant.merchantId = value
+          this.merchant.id = value
         } else if (this.provider.guid === QRProviderGUID.VIETQR) {
           this.provider.name = QRProvider.VIETQR
           this.parseVietQRConsumer(value)
