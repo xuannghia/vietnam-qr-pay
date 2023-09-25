@@ -247,7 +247,7 @@ export const Banks: Bank[] = [
     code: BankCode.KASIKORN_BANK,
     name: 'Ngân hàng Đại chúng TNHH KASIKORNBANK - CN TP. Hồ Chí Minh',
     bin: '668888',
-    shortName: 'Kasikorn Bank',
+    shortName: 'Kasikornbank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
     swiftCode: 'KASIVNVX'
