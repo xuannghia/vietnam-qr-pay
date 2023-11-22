@@ -1,6 +1,6 @@
 /* Source: https://github.com/alexgorbatchev/node-crc/blob/master/src/calculators/crc16ccitt.ts */
 
-import { Buffer } from 'buffer'
+import { stringToUnit8Array } from './utils'
 
 let TABLE: number[] | Int32Array = [
   0x0000, 0x1021, 0x2042, 0x3063, 0x4084, 0x50a5, 0x60c6, 0x70e7, 0x8108, 0x9129, 0xa14a, 0xb16b,
@@ -32,7 +32,7 @@ if (typeof Int32Array !== 'undefined') {
 }
 
 export const crc16ccitt = (content: string): number => {
-  const current = Buffer.from(content)
+  const current = stringToUnit8Array(content)
   let crc = 0xffff
   for (let index = 0; index < current.length; index++) {
     crc = (TABLE[((crc >> 8) ^ current[index]) & 0xff] ^ (crc << 8)) & 0xffff
