@@ -1,6 +1,6 @@
 {
   "name": "vietnam-qr-pay",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Encode/Decode VietQR and VNPAY-QR",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
