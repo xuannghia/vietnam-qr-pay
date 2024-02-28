@@ -33,7 +33,7 @@ export enum ProviderFieldID {
   SERVICE = '02'
 }
 
-export enum VietQRSevice {
+export enum VietQRService {
   BY_ACCOUNT_NUMBER = 'QRIBFTTA', // Dịch vụ chuyển nhanh NAPAS247 đến Tài khoản
   BY_CARD_NUMBER = 'QRIBFTTC' // Dịch vụ chuyển nhanh NAPAS247 đến Thẻ
 }
@@ -55,7 +55,7 @@ export enum AdditionalDataID {
   ADDITIONAL_CONSUMER_DATA_REQUEST = '09' // Yêu cầu dữ liệu KH bổ sung
 }
 
-export class Prodiver {
+export class Provider {
   fieldId?: string
   name?: QRProvider
   guid?: string

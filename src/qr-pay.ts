@@ -1,10 +1,10 @@
-import { FieldID, QRProvider, VietQRConsumerFieldID, Consumer, AdditionalDataID, Prodiver, AdditionalData, QRProviderGUID, ProviderFieldID, Merchant, VietQRSevice } from './constants'
+import { FieldID, QRProvider, VietQRConsumerFieldID, Consumer, AdditionalDataID, Provider, AdditionalData, QRProviderGUID, ProviderFieldID, Merchant, VietQRService } from './constants/qr-pay'
 import { crc16ccitt } from './crc16'
 export class QRPay {
   isValid = true
   version: string
   initMethod: string
-  provider: Prodiver
+  provider: Provider
   merchant: Merchant
   consumer: Consumer
   category?: string
@@ -20,7 +20,7 @@ export class QRPay {
   crc?: string
 
   constructor(content?: string) {
-    this.provider = new Prodiver()
+    this.provider = new Provider()
     this.consumer = new Consumer()
     this.merchant = new Merchant()
     this.additionalData = new AdditionalData()
@@ -83,13 +83,13 @@ export class QRPay {
     return content + crc
   }
 
-  public static initVietQR (options: { bankBin: string, bankNumber: string, amount?: string, purpose?: string, service?: VietQRSevice }): QRPay {
+  public static initVietQR (options: { bankBin: string, bankNumber: string, amount?: string, purpose?: string, service?: VietQRService }): QRPay {
     const qr = new QRPay()
     qr.initMethod = options.amount ? '12' : '11'
     qr.provider.fieldId = FieldID.VIETQR
     qr.provider.guid = QRProviderGUID.VIETQR
     qr.provider.name = QRProvider.VIETQR
-    qr.provider.service = options.service || VietQRSevice.BY_ACCOUNT_NUMBER
+    qr.provider.service = options.service || VietQRService.BY_ACCOUNT_NUMBER
     qr.consumer.bankBin = options.bankBin
     qr.consumer.bankNumber = options.bankNumber
     qr.amount = options.amount
