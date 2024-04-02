@@ -2,6 +2,10 @@
 
 Thư viện hỗ trợ encode/decode mã QR của VietQR & VNPayQR
 
+[![npm](https://img.shields.io/npm/v/vietnam-qr-pay.svg)](https://www.npmjs.com/package/vietnam-qr-pay)
+[![download](https://img.shields.io/npm/dt/vietnam-qr-pay.svg)](https://www.npmjs.com/package/vietnam-qr-pay)
+[![bundlephobia](https://img.shields.io/bundlephobia/minzip/vietnam-qr-pay.svg)](https://bundlephobia.com/package/vietnam-qr-pay)
+
 ## Install
 
 ```bash
