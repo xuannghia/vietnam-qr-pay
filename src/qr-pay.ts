@@ -1,4 +1,4 @@
-import { FieldID, QRProvider, VietQRConsumerFieldID, Consumer, AdditionalDataID, Provider, AdditionalData, QRProviderGUID, ProviderFieldID, Merchant, VietQRService } from './constants/qr-pay'
+import { FieldID, QRProvider, VietQRConsumerFieldID, Consumer, AdditionalDataID, Provider, AdditionalData, QRProviderGUID, ProviderFieldID, Merchant, VietQRService, UnreservedFieldID, EVMCoFieldID } from './constants/qr-pay'
 import { crc16ccitt } from './crc16'
 export class QRPay {
   isValid = true
@@ -18,6 +18,9 @@ export class QRPay {
   zipCode?: string
   additionalData: AdditionalData
   crc?: string
+
+  EVMCo?: Record<string, string>
+  unreserved?: Record<string, string>
 
   constructor(content?: string) {
     this.provider = new Provider()
@@ -78,7 +81,10 @@ export class QRPay {
     const additionalDataContent = buildNumber + mobileNumber + storeLabel + loyaltyNumber + reference + customerLabel + terminal + purpose + dataRequest
     const additionalData = QRPay.genFieldData(FieldID.ADDITIONAL_DATA, additionalDataContent)
 
-    const content = `${version}${initMethod}${providerData}${category}${currency}${amountStr}${tipAndFeeType}${tipAndFeeAmount}${tipAndFeePercent}${nation}${merchantName}${city}${zipCode}${additionalData}${FieldID.CRC}04`
+    const EVMCoContent = Object.keys(this.EVMCo ?? {}).sort().map(key => QRPay.genFieldData(key, this.EVMCo?.[key])).join('')
+    const unreservedContent = Object.keys(this.unreserved ?? {}).sort().map(key => QRPay.genFieldData(key, this.unreserved?.[key])).join('')
+
+    const content = `${version}${initMethod}${providerData}${category}${currency}${amountStr}${tipAndFeeType}${tipAndFeeAmount}${tipAndFeePercent}${nation}${merchantName}${city}${zipCode}${additionalData}${EVMCoContent}${unreservedContent}${FieldID.CRC}04`
     const crc = QRPay.genCRCCode(content)
     return content + crc
   }
@@ -128,6 +134,17 @@ export class QRPay {
     qr.additionalData.customerLabel = options.customerLabel
     return qr
   }
+
+  public setEVMCoField (id: EVMCoFieldID, value: string): void {
+    if (!this.unreserved) this.unreserved = {}
+    this.unreserved[id] = value
+  }
+
+  public setUnreservedField (id: UnreservedFieldID, value: string): void {
+    if (!this.unreserved) this.unreserved = {}
+    this.unreserved[id] = value
+  }
+
   private parseRootContent (content: string): void {
     const { id, length, value, nextValue } = QRPay.sliceContent(content)
     if (value.length !== length) return this.invalid()
@@ -180,6 +197,14 @@ export class QRPay {
         this.crc = value
         break
       default:
+        const idNum = Number(id)
+        if (idNum >= 65 && idNum <= 79) {
+          if (!this.EVMCo) this.EVMCo = {}
+          this.EVMCo[id] = value
+        } else if (idNum >= 80 && idNum <= 99) {
+          if (!this.unreserved) this.unreserved = {}
+          this.unreserved[id] = value
+        }
         break
     }
     if (nextValue.length > 4) this.parseRootContent(nextValue)
