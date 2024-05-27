@@ -75,6 +75,17 @@ export const BanksObject: Record<BankKey, Bank> = {
     swiftCode: 'BVBVVNVX',
     keywords: 'baoviet, BVB'
   },
+  [BankKey.BANVIET]: {
+    key: BankKey.BANVIET,
+    code: BankCode.BANVIET,
+    name: 'Ngân hàng TMCP Bản Việt',
+    bin: '970454',
+    shortName: 'BVBank',
+    vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
+    lookupSupported: 1,
+    swiftCode: 'VCBCVNVX',
+    keywords: 'banviet, vietcapitalbank'
+  },
   [BankKey.BIDC]: {
     key: BankKey.BIDC,
     code: BankCode.BIDC,
@@ -556,17 +567,6 @@ export const BanksObject: Record<BankKey, Bank> = {
     lookupSupported: 1,
     swiftCode: 'VNTTVNVX',
     keywords: 'vietnamthuongtin, vnthuongtin'
-  },
-  [BankKey.VIETCAPITAL_BANK]: {
-    key: BankKey.VIETCAPITAL_BANK,
-    code: BankCode.VIETCAPITAL_BANK,
-    name: 'Ngân hàng TMCP Bản Việt',
-    bin: '970454',
-    shortName: 'Viet Capital Bank',
-    vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
-    lookupSupported: 1,
-    swiftCode: 'VCBCVNVX',
-    keywords: 'banviet'
   },
   [BankKey.VIETCOMBANK]: {
     key: BankKey.VIETCOMBANK,

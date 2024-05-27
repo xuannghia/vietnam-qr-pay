@@ -400,10 +400,11 @@ export const BankApps: BankApp[] = [
     supportVNPayQR: true
   },
   {
-    bank: BankKey.VIETCAPITAL_BANK,
+    bank: BankKey.BANVIET,
+    scheme: 'bvbankdigimi',
     packageId: 'vn.banvietbank.mobilebanking',
     appStoreId: 'id1526444697',
-    supportVietQR: false,
+    supportVietQR: true,
     supportVNPayQR: false
   },
   {
