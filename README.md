@@ -1,6 +1,6 @@
 # Vietnam QR Pay
 
-Thư viện hỗ trợ encode/decode mã QR của VietQR & VNPayQR
+Thư viện hỗ trợ encode/decode mã QR của VietQR (QR Ngân hàng, QR Đa năng Momo/ZaloPay) & VNPayQR
 
 [![npm](https://img.shields.io/npm/v/vietnam-qr-pay.svg)](https://www.npmjs.com/package/vietnam-qr-pay)
 [![download](https://img.shields.io/npm/dt/vietnam-qr-pay.svg)](https://www.npmjs.com/package/vietnam-qr-pay)
@@ -48,6 +48,67 @@ console.log(content)
 // 00020101021238530010A0000007270123000697041601092576788590208QRIBFTTA53037045405100005802VN62150811Chuyen tien630453E6
 
 ```
+
+### QR Đa năng của MoMo và ZaloPay
+
+Hiện tại, QR Đa năng của MoMo và ZaloPay đang thông qua Ngân hàng Bản Việt (BVBank) để nhận tiền.
+
+Mỗi tài khoản MoMo/ZaloPay sẽ được gán một STK tương ứng tại BVBank. Tiền chuyển đến STK này sẽ được chuyển tiếp đến ví MoMo/ZaloPay.
+
+Bạn có thể lấy STK này tại trang chi tiết của QR Nhận tiền trong ứng dụng MoMo/ZaloPay.
+
+#### MoMo
+
+```javascript
+import { QRPay, BanksObject } from 'vietnam-qr-pay';
+
+// Số tài khoản trong ví MoMo
+const accountNumber = '99MM24011M34875080'
+
+const momoQR = QRPay.initVietQR({
+  bankBin: BanksObject.banviet.bin,
+  bankNumber: accountNumber,
+  // amount: '10000', // Số tiền (không bắt buộc)
+  // purpose: 'Chuyen tien', // Nội dung (không bắt buộc)
+})
+
+// Trong mã QR của MoMo có chứa thêm 1 mã tham chiếu tương ứng với STK
+momoQR.additionalData.reference = 'MOMOW2W' + accountNumber.slice(10)
+
+// Mã QR của MoMo có thêm 1 trường ID 80 với giá trị là 3 số cuối của SỐ ĐIỆN THOẠI của tài khoản nhận tiền
+momoQR.setUnreservedField('80', '046')
+
+const content = momoQR.build()
+
+// 00020101021138620010A00000072701320006970454011899MM24011M348750800208QRIBFTTA53037045802VN62190515MOMOW2W3487508080030466304EBC8
+
+```
+
+<img src="test/momo.svg" width="160">
+
+#### ZaloPay
+
+> Trong mã QR của ZaloPay có chứa một số thông tin bổ sung ở trường ID 26. Tuy nhiên chưa rõ chức năng của các thông tin này (có thể là dùng để định danh từng mã QR đc tạo trên hệ thống của ZaloPay). Trong ví dụ dưới sẽ bỏ qua các thông tin này.
+
+```javascript
+import { QRPay, BanksObject } from 'vietnam-qr-pay';
+
+// Số tài khoản trong ví ZaloPay
+const accountNumber = '99ZP24009M07248267'
+  
+const zaloPayQR = QRPay.initVietQR({
+  bankBin: BanksObject.banviet.bin,
+  bankNumber: accountNumber,
+  // amount: '10000', // Số tiền (không bắt buộc)
+  // purpose: 'Chuyen tien', // Nội dung (không bắt buộc)
+})
+
+const content = zaloPayQR.build()
+// 00020101021138620010A00000072701320006970454011899ZP24009M072482670208QRIBFTTA53037045802VN6304073C
+```
+
+<img src="test/zalopay.svg" width="160">
+
 
 ### VNPay 
 
