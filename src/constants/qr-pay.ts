@@ -63,6 +63,7 @@ export class Provider {
   name?: QRProvider
   guid?: string
   service?: string
+  data?: string
 }
 
 export class AdditionalData {
