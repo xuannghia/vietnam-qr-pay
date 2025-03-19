@@ -52,6 +52,8 @@ export class QRPay {
       providerDataContent = bankBin + bankNumber
     } else if (this.provider.guid === QRProviderGUID.VNPAY) {
       providerDataContent = this.merchant.id ?? ''
+    } else {
+      providerDataContent = this.provider.data ?? ''
     }
     const provider = QRPay.genFieldData(ProviderFieldID.DATA, providerDataContent)
     const service = QRPay.genFieldData(ProviderFieldID.SERVICE, this.provider.service)
@@ -224,6 +226,7 @@ export class QRPay {
           this.provider.name = QRProvider.VIETQR
           this.parseVietQRConsumer(value)
         }
+        this.provider.data = value
         break
       case ProviderFieldID.SERVICE:
         this.provider.service = value
@@ -252,23 +255,32 @@ export class QRPay {
   private parseAdditionalData (content: string): void {
     const { id, value, nextValue } = QRPay.sliceContent(content)
     switch (id) {
-      case AdditionalDataID.PURPOSE_OF_TRANSACTION:
-        this.additionalData.purpose = value
-        break
       case AdditionalDataID.BILL_NUMBER:
         this.additionalData.billNumber = value
         break
       case AdditionalDataID.MOBILE_NUMBER:
         this.additionalData.mobileNumber = value
         break
-      case AdditionalDataID.REFERENCE_LABEL:
-        this.additionalData.reference = value
-        break
       case AdditionalDataID.STORE_LABEL:
         this.additionalData.store = value
         break
+      case AdditionalDataID.LOYALTY_NUMBER:
+        this.additionalData.loyaltyNumber = value
+        break
+      case AdditionalDataID.REFERENCE_LABEL:
+        this.additionalData.reference = value
+        break
+      case AdditionalDataID.CUSTOMER_LABEL:
+        this.additionalData.customerLabel = value
+        break
       case AdditionalDataID.TERMINAL_LABEL:
         this.additionalData.terminal = value
+        break
+      case AdditionalDataID.PURPOSE_OF_TRANSACTION:
+        this.additionalData.purpose = value
+        break
+      case AdditionalDataID.ADDITIONAL_CONSUMER_DATA_REQUEST:
+        this.additionalData.dataRequest = value
         break
       default:
         break
