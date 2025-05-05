@@ -27,11 +27,13 @@ export enum BankKey {
   KOOKMIN_BANK_HN = 'kookminhn',
   LIENVIETPOST_BANK = 'lienvietpostbank',
   MBBANK = 'mbbank',
+  MBV = 'mbv',
   MSB = 'msb',
   NAM_A_BANK = 'namabank',
   NCB = 'ncb',
   NONGHYUP_BANK_HN = 'nonghyup',
   OCB = 'ocb',
+  /** @deprecated Chuyển giao cho MBBank, đổi tên thành MBV */
   OCEANBANK = 'oceanbank',
   PGBANK = 'pgbank',
   PUBLIC_BANK = 'publicbank',

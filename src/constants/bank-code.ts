@@ -27,11 +27,13 @@ export enum BankCode {
   KOOKMIN_BANK_HN = 'KBHN',
   LIENVIETPOST_BANK = 'LPB',
   MBBANK = 'MBB',
+  MBV = 'MBV',
   MSB = 'MSB',
   NAM_A_BANK = 'NAB',
   NCB = 'NVB',
   NONGHYUP_BANK_HN = 'NONGHYUP',
   OCB = 'OCB',
+  /** @deprecated Chuyển giao cho MBBank, đổi tên thành MBV */
   OCEANBANK = 'OCEANBANK',
   PGBANK = 'PGB',
   PUBLIC_BANK = 'PBVN',

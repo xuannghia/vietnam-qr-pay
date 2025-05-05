@@ -11,6 +11,7 @@ export interface Bank {
   lookupSupported?: number
   swiftCode?: string | null
   keywords?: string
+  deprecated?: boolean
 }
 
 export enum VietQRStatus {
@@ -314,6 +315,17 @@ export const BanksObject: Record<BankKey, Bank> = {
     lookupSupported: 1,
     swiftCode: 'MSCBVNVX'
   },
+  [BankKey.MBV]: {
+    key: BankKey.MBV,
+    code: BankCode.MBV,
+    name: 'Ngân hàng TNHH MTV Việt Nam Hiện Đại',
+    bin: '970414',
+    shortName: 'MBV',
+    vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
+    lookupSupported: 1,
+    swiftCode: 'OCBKUS3M',
+    keywords: 'daiduong, mbv',
+  },
   [BankKey.MSB]: {
     key: BankKey.MSB,
     code: BankCode.MSB,
@@ -377,7 +389,8 @@ export const BanksObject: Record<BankKey, Bank> = {
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
     swiftCode: 'OCBKUS3M',
-    keywords: 'daiduong'
+    keywords: 'daiduong',
+    deprecated: true
   },
   [BankKey.PGBANK]: {
     key: BankKey.PGBANK,

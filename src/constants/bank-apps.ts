@@ -203,6 +203,14 @@ export const BankApps: BankApp[] = [
     supportVNPayQR: false
   },
   {
+    bank: BankKey.MBV,
+    scheme: 'oceanbankmobilebanking',
+    packageId: 'com.vnpay.ocean',
+    appStoreId: 'id1469028843',
+    supportVietQR: true,
+    supportVNPayQR: true
+  },
+  {
     bank: BankKey.MSB,
     scheme: 'msbmobile',
     packageId: 'vn.com.msb.smartBanking',
