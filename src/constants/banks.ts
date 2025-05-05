@@ -317,6 +317,16 @@ export const BanksObject: Record<BankKey, Bank> = {
     swiftCode: 'LVBKVNVX',
     keywords: 'lienvietbank, loc phat',
   },
+  [BankKey.LIOBANK]: {
+    key: BankKey.LIOBANK,
+    code: BankCode.LIOBANK,
+    name: 'Ngân hàng số Liobank - Ngân hàng TMCP Phương Đông',
+    bin: '963369',
+    shortName: 'Liobank',
+    vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
+    lookupSupported: 1,
+    swiftCode: null
+  },
   [BankKey.MBBANK]: {
     key: BankKey.MBBANK,
     code: BankCode.MBBANK,

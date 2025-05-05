@@ -6,6 +6,7 @@ export interface BankApp {
   packageId?: string
   appStoreId?: string
   supportVietQR?: boolean
+  /** TRUE nếu ứng dụng có hỗ trợ mở deeplink trên web của VNPay */
   supportVNPayQR?: boolean
 }
 
@@ -199,6 +200,14 @@ export const BankApps: BankApp[] = [
     scheme: 'lv24h',
     packageId: 'vn.com.lpb.lienviet24h',
     appStoreId: 'id1488794748',
+    supportVietQR: true,
+    supportVNPayQR: false
+  },
+  {
+    bank: BankKey.LIOBANK,
+    scheme: 'lio',
+    packageId: 'com.ocb.liobank',
+    appStoreId: 'id6444787281',
     supportVietQR: true,
     supportVNPayQR: false
   },

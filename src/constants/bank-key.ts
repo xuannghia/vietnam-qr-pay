@@ -29,6 +29,7 @@ export enum BankKey {
   /** @deprecated Đổi tên thành Lộc Phát Việt Nam (LPBANK) */
   LIENVIETPOST_BANK = 'lienvietpostbank',
   LPBANK = 'lpbank',
+  LIOBANK = 'liobank',
   MBBANK = 'mbbank',
   MBV = 'mbv',
   MSB = 'msb',
