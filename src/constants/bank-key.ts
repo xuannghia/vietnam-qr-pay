@@ -25,7 +25,9 @@ export enum BankKey {
   KIENLONG_BANK = 'kienlongbank',
   KOOKMIN_BANK_HCM = 'kookminhcm',
   KOOKMIN_BANK_HN = 'kookminhn',
+  /** @deprecated Đổi tên thành Lộc Phát Việt Nam (LPBANK) */
   LIENVIETPOST_BANK = 'lienvietpostbank',
+  LPBANK = 'lpbank',
   MBBANK = 'mbbank',
   MBV = 'mbv',
   MSB = 'msb',

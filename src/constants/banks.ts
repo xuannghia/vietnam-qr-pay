@@ -296,14 +296,26 @@ export const BanksObject: Record<BankKey, Bank> = {
   },
   [BankKey.LIENVIETPOST_BANK]: {
     key: BankKey.LIENVIETPOST_BANK,
-    code: BankCode.LIENVIETPOST_BANK,
+    code: BankCode.LPBANK,
     name: 'Ngân hàng TMCP Bưu Điện Liên Việt',
     bin: '970449',
     shortName: 'LienVietPostBank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
     swiftCode: 'LVBKVNVX',
-    keywords: 'lienvietbank'
+    keywords: 'lienvietbank',
+    deprecated: true
+  },
+  [BankKey.LPBANK]: {
+    key: BankKey.LPBANK,
+    code: BankCode.LPBANK,
+    name: 'Ngân hàng TMCP Lộc Phát Việt Nam',
+    bin: '970449',
+    shortName: 'LPBank',
+    vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
+    lookupSupported: 1,
+    swiftCode: 'LVBKVNVX',
+    keywords: 'lienvietbank, loc phat',
   },
   [BankKey.MBBANK]: {
     key: BankKey.MBBANK,

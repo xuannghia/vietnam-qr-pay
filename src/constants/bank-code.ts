@@ -25,7 +25,7 @@ export enum BankCode {
   KIENLONG_BANK = 'KLB',
   KOOKMIN_BANK_HCM = 'KBHCM',
   KOOKMIN_BANK_HN = 'KBHN',
-  LIENVIETPOST_BANK = 'LPB',
+  LPBANK = 'LPB',
   MBBANK = 'MBB',
   MBV = 'MBV',
   MSB = 'MSB',
