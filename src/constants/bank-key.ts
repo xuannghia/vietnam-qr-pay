@@ -12,6 +12,7 @@ export enum BankKey {
   CIMB = 'cimb',
   COOP_BANK = 'coopbank',
   DBS_BANK = 'dbsbank',
+  /** @deprecated - Chuyển giao cho HDBank, đổi tên thành Vikki Digital Bank */
   DONG_A_BANK = 'dongabank',
   EXIMBANK = 'eximbank',
   GPBANK = 'gpbank',
@@ -57,6 +58,7 @@ export enum BankKey {
   VIET_BANK = 'vietbank',
   VIETCOMBANK = 'vietcombank',
   VIETINBANK = 'vietinbank',
+  VIKKI = 'vikki',
   VPBANK = 'vpbank',
   VRB = 'vrb',
   WOORI_BANK = 'wooribank',

@@ -55,6 +55,7 @@ export enum BankCode {
   VIET_BANK = 'VBB',
   VIETCOMBANK = 'VCB',
   VIETINBANK = 'CTG',
+  VIKKI = 'VIKKI',
   VPBANK = 'VPB',
   VRB = 'VRB',
   WOORI_BANK = 'WRB',

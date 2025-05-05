@@ -614,6 +614,17 @@ export const BanksObject: Record<BankKey, Bank> = {
     swiftCode: 'ICBVVNVX',
     keywords: 'viettin' // Some users may use this keyword
   },
+  [BankKey.VIKKI]: {
+    key: BankKey.VIKKI,
+    code: BankCode.VIKKI,
+    name: 'Ngân hàng TNHH MTV Số Vikki',
+    bin: '970406',
+    shortName: 'Vikki Bank',
+    vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
+    lookupSupported: 1,
+    swiftCode: 'EACBVNVX',
+    keywords: 'vikki, dongabank, dong a',
+  },
   [BankKey.VPBANK]: {
     key: BankKey.VPBANK,
     code: BankCode.VPBANK,

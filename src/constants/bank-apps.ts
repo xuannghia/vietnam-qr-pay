@@ -440,6 +440,14 @@ export const BankApps: BankApp[] = [
     supportVNPayQR: true
   },
   {
+    bank: BankKey.VIKKI,
+    scheme: 'vikki',
+    packageId: 'com.finx.vikki',
+    appStoreId: 'id6471952024',
+    supportVietQR: true,
+    supportVNPayQR: false
+  },
+  {
     bank: BankKey.VPBANK,
     scheme: 'vpbankneo',
     packageId: 'com.vnpay.vpbankonline',
