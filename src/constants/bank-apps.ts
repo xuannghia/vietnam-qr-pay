@@ -6,6 +6,7 @@ export interface BankApp {
   packageId?: string
   appStoreId?: string
   supportVietQR?: boolean
+  /** TRUE nếu ứng dụng có hỗ trợ mở deeplink trên web của VNPay */
   supportVNPayQR?: boolean
 }
 
@@ -195,12 +196,36 @@ export const BankApps: BankApp[] = [
     supportVNPayQR: false
   },
   {
+    bank: BankKey.LPBANK,
+    scheme: 'lv24h',
+    packageId: 'vn.com.lpb.lienviet24h',
+    appStoreId: 'id1488794748',
+    supportVietQR: true,
+    supportVNPayQR: false
+  },
+  {
+    bank: BankKey.LIOBANK,
+    scheme: 'lio',
+    packageId: 'com.ocb.liobank',
+    appStoreId: 'id6444787281',
+    supportVietQR: true,
+    supportVNPayQR: false
+  },
+  {
     bank: BankKey.MBBANK,
     scheme: 'mbmobile',
     packageId: 'com.mbmobile',
     appStoreId: 'id1205807363',
     supportVietQR: true,
     supportVNPayQR: false
+  },
+  {
+    bank: BankKey.MBV,
+    scheme: 'oceanbankmobilebanking',
+    packageId: 'com.vnpay.ocean',
+    appStoreId: 'id1469028843',
+    supportVietQR: true,
+    supportVNPayQR: true
   },
   {
     bank: BankKey.MSB,
@@ -422,6 +447,14 @@ export const BankApps: BankApp[] = [
     appStoreId: 'id689963454',
     supportVietQR: true,
     supportVNPayQR: true
+  },
+  {
+    bank: BankKey.VIKKI,
+    scheme: 'vikki',
+    packageId: 'com.finx.vikki',
+    appStoreId: 'id6471952024',
+    supportVietQR: true,
+    supportVNPayQR: false
   },
   {
     bank: BankKey.VPBANK,

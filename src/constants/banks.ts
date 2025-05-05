@@ -11,6 +11,7 @@ export interface Bank {
   lookupSupported?: number
   swiftCode?: string | null
   keywords?: string
+  deprecated?: boolean
 }
 
 export enum VietQRStatus {
@@ -295,14 +296,36 @@ export const BanksObject: Record<BankKey, Bank> = {
   },
   [BankKey.LIENVIETPOST_BANK]: {
     key: BankKey.LIENVIETPOST_BANK,
-    code: BankCode.LIENVIETPOST_BANK,
+    code: BankCode.LPBANK,
     name: 'Ngân hàng TMCP Bưu Điện Liên Việt',
     bin: '970449',
     shortName: 'LienVietPostBank',
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
     swiftCode: 'LVBKVNVX',
-    keywords: 'lienvietbank'
+    keywords: 'lienvietbank',
+    deprecated: true
+  },
+  [BankKey.LPBANK]: {
+    key: BankKey.LPBANK,
+    code: BankCode.LPBANK,
+    name: 'Ngân hàng TMCP Lộc Phát Việt Nam',
+    bin: '970449',
+    shortName: 'LPBank',
+    vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
+    lookupSupported: 1,
+    swiftCode: 'LVBKVNVX',
+    keywords: 'lienvietbank, loc phat',
+  },
+  [BankKey.LIOBANK]: {
+    key: BankKey.LIOBANK,
+    code: BankCode.LIOBANK,
+    name: 'Ngân hàng số Liobank - Ngân hàng TMCP Phương Đông',
+    bin: '963369',
+    shortName: 'Liobank',
+    vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
+    lookupSupported: 1,
+    swiftCode: null
   },
   [BankKey.MBBANK]: {
     key: BankKey.MBBANK,
@@ -313,6 +336,17 @@ export const BanksObject: Record<BankKey, Bank> = {
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
     swiftCode: 'MSCBVNVX'
+  },
+  [BankKey.MBV]: {
+    key: BankKey.MBV,
+    code: BankCode.MBV,
+    name: 'Ngân hàng TNHH MTV Việt Nam Hiện Đại',
+    bin: '970414',
+    shortName: 'MBV',
+    vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
+    lookupSupported: 1,
+    swiftCode: 'OCBKUS3M',
+    keywords: 'daiduong, mbv',
   },
   [BankKey.MSB]: {
     key: BankKey.MSB,
@@ -377,7 +411,8 @@ export const BanksObject: Record<BankKey, Bank> = {
     vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
     lookupSupported: 1,
     swiftCode: 'OCBKUS3M',
-    keywords: 'daiduong'
+    keywords: 'daiduong',
+    deprecated: true
   },
   [BankKey.PGBANK]: {
     key: BankKey.PGBANK,
@@ -588,6 +623,17 @@ export const BanksObject: Record<BankKey, Bank> = {
     lookupSupported: 1,
     swiftCode: 'ICBVVNVX',
     keywords: 'viettin' // Some users may use this keyword
+  },
+  [BankKey.VIKKI]: {
+    key: BankKey.VIKKI,
+    code: BankCode.VIKKI,
+    name: 'Ngân hàng TNHH MTV Số Vikki',
+    bin: '970406',
+    shortName: 'Vikki Bank',
+    vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
+    lookupSupported: 1,
+    swiftCode: 'EACBVNVX',
+    keywords: 'vikki, dongabank, dong a',
   },
   [BankKey.VPBANK]: {
     key: BankKey.VPBANK,
