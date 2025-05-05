@@ -195,6 +195,14 @@ export const BankApps: BankApp[] = [
     supportVNPayQR: false
   },
   {
+    bank: BankKey.LPBANK,
+    scheme: 'lv24h',
+    packageId: 'vn.com.lpb.lienviet24h',
+    appStoreId: 'id1488794748',
+    supportVietQR: true,
+    supportVNPayQR: false
+  },
+  {
     bank: BankKey.MBBANK,
     scheme: 'mbmobile',
     packageId: 'com.mbmobile',
