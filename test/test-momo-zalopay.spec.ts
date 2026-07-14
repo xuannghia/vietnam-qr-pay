@@ -6,10 +6,9 @@ import { QRPay } from '../src/qr-pay'
 
 
 test('MoMo', () => {  
-  const bankBin = '971025'
   const accountNumber = 'PSP123456789000000'
   const momoQR = QRPay.initVietQR({
-    bankBin: bankBin,
+    bankBin: BanksObject.momo.bin,
     bankNumber: accountNumber
   })
   

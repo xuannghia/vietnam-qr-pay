@@ -64,8 +64,6 @@ Bạn có thể lấy STK này tại trang chi tiết của QR Nhận tiền tro
 ```javascript
 import { QRPay, BanksObject } from 'vietnam-qr-pay';
 
-// Mã BIN ngân hàng (ví dụ 971025)
-const bankBin = '971025'
 // Số tài khoản trong ví MoMo
 const accountNumber = 'PSP123456789000000'
 
@@ -76,7 +74,7 @@ const accountNumber = 'PSP123456789000000'
 const momoReferenceId = '12345678' 
 
 const momoQR = QRPay.initVietQR({
-  bankBin: bankBin,
+  bankBin: BanksObject.momo.bin,
   bankNumber: accountNumber,
   // amount: '10000', // Số tiền (không bắt buộc)
   // purpose: 'Chuyen tien', // Nội dung (không bắt buộc)

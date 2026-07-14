@@ -666,6 +666,16 @@ export const BanksObject: Record<BankKey, Bank> = {
     vietQRStatus: VietQRStatus.RECEIVE_ONLY,
     lookupSupported: 1,
     swiftCode: null
+  },
+  [BankKey.MOMO]: {
+    key: BankKey.MOMO,
+    code: BankCode.MOMO,
+    name: 'CTCP Dịch Vụ Di Động Trực Tuyến',
+    bin: '971025',
+    shortName: 'MoMo',
+    vietQRStatus: VietQRStatus.TRANSFER_SUPPORTED,
+    lookupSupported: 1,
+    swiftCode: null
   }
 }
 
