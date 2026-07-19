@@ -80,7 +80,7 @@ const momoQR = QRPay.initVietQR({
   bankNumber: accountNumber,
   // amount: '10000', // Số tiền (không bắt buộc)
   // purpose: 'Chuyen tien', // Nội dung (không bắt buộc)
-  // initMethod: '12', // Tự động: Có amount thì '12' (Động), không có thì '11' (Tĩnh). Có thể truyền thêm để tự gán.
+  // initMethod: '12', // Tự động: Có amount thì '12' (Động), không có thì '11' (Tĩnh). Có thể truyền thêm để ghi đè hành vi mặc định.
 })
 
 // Gán mã đối chiếu bí mật cho tài khoản MoMo
