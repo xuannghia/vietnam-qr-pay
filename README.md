@@ -59,6 +59,38 @@ Bạn có thể lấy STK này tại trang chi tiết của QR Nhận tiền tro
 
 #### MoMo
 
+##### 1. Dành cho các tài khoản MỚI (Số tài khoản bắt đầu bằng `PSP`)
+
+```javascript
+import { QRPay, BanksObject } from 'vietnam-qr-pay';
+
+// Số tài khoản trong ví MoMo
+const accountNumber = 'PSP123456789000000'
+
+// LƯU Ý QUAN TRỌNG: Cách lấy Mã đối chiếu bí mật (momoReferenceId)
+// 1. Vào app MoMo tạo/lưu mã QR Nhận Tiền của bạn (Số tài khoản: Tài khoản nhận tiền mặc định).
+// 2. Dùng Camera gốc của điện thoại (KHÔNG dùng app MoMo hay Zalo vì sẽ bị nhảy sang trang chuyển tiền) quét ảnh QR đó.
+// 3. Nó sẽ trả về chuỗi text dài (ví dụ: ...MOMOW2W123456786304...). Lấy phần kí tự nằm ngay sau chữ "MOMOW2W" cho đến khi gặp cụm "6304" hoặc "80" (thường bao gồm 8 chữ số).
+const momoReferenceId = '12345678' 
+
+const momoQR = QRPay.initVietQR({
+  bankBin: BanksObject.momo.bin,
+  bankNumber: accountNumber,
+  // amount: '10000', // Số tiền (không bắt buộc)
+  // purpose: 'Chuyen tien', // Nội dung (không bắt buộc)
+  // initMethod: '12', // Tự động: Có amount thì '12' (Động), không có thì '11' (Tĩnh). Có thể truyền thêm để tự gán.
+})
+
+// Gán mã đối chiếu bí mật cho tài khoản MoMo
+momoQR.additionalData.reference = 'MOMOW2W' + momoReferenceId
+
+const content = momoQR.build()
+
+// 00020101021138620010A000000727013200069710250118PSP1234567890000000208QRIBFTTA53037045802VN62190515MOMOW2W123456786304821F
+```
+
+##### 2. Dành cho các tài khoản CŨ (Không bắt đầu bằng `PSP` - có thể đã lỗi thời)
+
 ```javascript
 import { QRPay, BanksObject } from 'vietnam-qr-pay';
 

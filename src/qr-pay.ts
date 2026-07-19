@@ -91,9 +91,10 @@ export class QRPay {
     return content + crc
   }
 
-  public static initVietQR (options: { bankBin: string, bankNumber: string, amount?: string, purpose?: string, service?: VietQRService }): QRPay {
+  public static initVietQR (options: { bankBin: string, bankNumber: string, amount?: string, purpose?: string, service?: VietQRService, initMethod?: string }): QRPay {
     const qr = new QRPay()
-    qr.initMethod = options.amount ? '12' : '11'
+    // Prioritize using initMethod from options if available; otherwise, automatically determine based on amount (if there is an amount, it's dynamic '12'; if there isn't, it's static '11')
+    qr.initMethod = options.initMethod || (options.amount ? '12' : '11')
     qr.provider.fieldId = FieldID.VIETQR
     qr.provider.guid = QRProviderGUID.VIETQR
     qr.provider.name = QRProvider.VIETQR

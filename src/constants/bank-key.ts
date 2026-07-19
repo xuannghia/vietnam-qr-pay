@@ -63,4 +63,5 @@ export enum BankKey {
   VPBANK = 'vpbank',
   VRB = 'vrb',
   WOORI_BANK = 'wooribank',
+  MOMO = 'momo',
 }

@@ -6,16 +6,17 @@ import { QRPay } from '../src/qr-pay'
 
 
 test('MoMo', () => {  
-  const accountNumber = '99MM24011M34875080'
+  const accountNumber = 'PSP123456789000000'
   const momoQR = QRPay.initVietQR({
-    bankBin: BanksObject.banviet.bin,
-    bankNumber: accountNumber,
+    bankBin: BanksObject.momo.bin,
+    bankNumber: accountNumber
   })
-  momoQR.additionalData.reference = 'MOMOW2W' + accountNumber.slice(10)
-  momoQR.setUnreservedField('80', '046')
+  
+  // Gán mã đối chiếu bí mật cho tài khoản
+  momoQR.additionalData.reference = 'MOMOW2W' + '12345678'
   // QR Content generated from MoMo app
   const content = momoQR.build()
-  expect(content).toBe('00020101021138620010A00000072701320006970454011899MM24011M348750800208QRIBFTTA53037045802VN62190515MOMOW2W3487508080030466304EBC8')
+  expect(content).toBe('00020101021138620010A000000727013200069710250118PSP1234567890000000208QRIBFTTA53037045802VN62190515MOMOW2W123456786304821F')
 
   const svg = toSVG(content, {
     ecLevel: 'L',

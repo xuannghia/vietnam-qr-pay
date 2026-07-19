@@ -60,4 +60,5 @@ export enum BankCode {
   VPBANK = 'VPB',
   VRB = 'VRB',
   WOORI_BANK = 'WRB',
+  MOMO = 'momo',
 }
