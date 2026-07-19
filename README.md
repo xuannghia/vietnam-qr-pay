@@ -61,7 +61,7 @@ Bạn có thể lấy STK này tại trang chi tiết của QR Nhận tiền tro
 
 ##### 1. Dành cho các tài khoản MỚI (Số tài khoản bắt đầu bằng `PSP`)
 
-> [!NOTE] Lưu ý
+> [!NOTE]
 > Với các tài khoản mới, MoMo đã thay đổi cấu trúc mã tham chiếu. Bạn có thể lấy mã này như sau:
 > 1. Vào app MoMo tạo/lưu mã QR Nhận Tiền của bạn (Số tài khoản: Tài khoản nhận tiền mặc định).
 > 2. Upload mã QR này lên công cụ debug (https://xuannghia.dev/tools/qr-pay) hoặc quét bằng camera mặc định của máy.
