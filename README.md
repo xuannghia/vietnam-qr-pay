@@ -83,7 +83,7 @@ const momoQR = QRPay.initVietQR({
   // initMethod: '12', // Tự động: Có amount thì '12' (Động), không có thì '11' (Tĩnh). Có thể truyền thêm để ghi đè hành vi mặc định.
 })
 
-// Gán mã đối chiếu bí mật cho tài khoản MoMo
+// Gán mã tham chiếu cho tài khoản MoMo
 momoQR.additionalData.reference = referenceId
 
 const content = momoQR.build()
