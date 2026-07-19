@@ -61,28 +61,30 @@ Bạn có thể lấy STK này tại trang chi tiết của QR Nhận tiền tro
 
 ##### 1. Dành cho các tài khoản MỚI (Số tài khoản bắt đầu bằng `PSP`)
 
+> [!NOTE]
+> Với các tài khoản mới, MoMo đã thay đổi cấu trúc mã tham chiếu. Bạn có thể lấy mã này như sau:
+> 1. Vào app MoMo tạo/lưu mã QR Nhận Tiền của bạn (Số tài khoản: Tài khoản nhận tiền mặc định).
+> 2. Upload mã QR này lên công cụ debug (https://xuannghia.dev/tools/qr-pay) hoặc quét bằng camera mặc định của máy.
+> 3. Mã tham chiếu sẽ có dạng MOMOW2W[dãy số] (ví dụ: ...MOMOW2W123456786304...). 
+> Nếu quét bằng camera, hãy sao chép phần kí tự từ "MOMOW2W" cho đến khi gặp cụm "6304" hoặc "80" (thường bao gồm 8 chữ số).
+
 ```javascript
 import { QRPay, BanksObject } from 'vietnam-qr-pay';
 
 // Số tài khoản trong ví MoMo
 const accountNumber = 'PSP123456789000000'
-
-// LƯU Ý QUAN TRỌNG: Cách lấy Mã đối chiếu bí mật (momoReferenceId)
-// 1. Vào app MoMo tạo/lưu mã QR Nhận Tiền của bạn (Số tài khoản: Tài khoản nhận tiền mặc định).
-// 2. Dùng Camera gốc của điện thoại (KHÔNG dùng app MoMo hay Zalo vì sẽ bị nhảy sang trang chuyển tiền) quét ảnh QR đó.
-// 3. Nó sẽ trả về chuỗi text dài (ví dụ: ...MOMOW2W123456786304...). Lấy phần kí tự nằm ngay sau chữ "MOMOW2W" cho đến khi gặp cụm "6304" hoặc "80" (thường bao gồm 8 chữ số).
-const momoReferenceId = '12345678' 
+const referenceId = 'MOMOW2W12345678' 
 
 const momoQR = QRPay.initVietQR({
   bankBin: BanksObject.momo.bin,
   bankNumber: accountNumber,
   // amount: '10000', // Số tiền (không bắt buộc)
   // purpose: 'Chuyen tien', // Nội dung (không bắt buộc)
-  // initMethod: '12', // Tự động: Có amount thì '12' (Động), không có thì '11' (Tĩnh). Có thể truyền thêm để tự gán.
+  // initMethod: '12', // Tự động: Có amount thì '12' (Động), không có thì '11' (Tĩnh). Có thể truyền thêm để ghi đè hành vi mặc định.
 })
 
 // Gán mã đối chiếu bí mật cho tài khoản MoMo
-momoQR.additionalData.reference = 'MOMOW2W' + momoReferenceId
+momoQR.additionalData.reference = referenceId
 
 const content = momoQR.build()
 
